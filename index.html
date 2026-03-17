@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Metbud — Producent Elementów Stalowych i Aluminiowych</title>
+  <meta name="description" content="Metbud produkuje blachy perforowane i komponenty do lawet, szczeble drabinowe i podesty antypoślizgowe oraz balustrady i wiaty. Polska produkcja B2B." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:    #0d0f14;
+      --ink-2:  #161920;
+      --ink-3:  #1e2230;
+      --red:    #c9242a;
+      --red-h:  #e02a31;
+      --white:  #ffffff;
+      --muted:  #8a8f9e;
+      --line:   rgba(255,255,255,0.08);
+      --line-d: rgba(0,0,0,0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--ink);
+      color: #fff;
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--line);
+      background: rgba(13, 15, 20, 0.9);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav-row {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 32px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo img { height: 32px; filter: brightness(0) invert(1); }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 0;
+    }
+
+    .nav-menu a {
+      display: block;
+      padding: 0 18px;
+      height: 60px;
+      line-height: 60px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.15s;
+      border-right: 1px solid var(--line);
+    }
+
+    .nav-menu li:first-child a { border-left: 1px solid var(--line); }
+    .nav-menu a:hover { color: #fff; }
+
+    .nav-cta-link {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--red) !important;
+      border: 1px solid var(--red) !important;
+      padding: 0 22px !important;
+      transition: background 0.15s, color 0.15s !important;
+    }
+
+    .nav-cta-link:hover { background: var(--red) !important; color: #fff !important; }
+
+    .nav-ham { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .nav-ham span { width: 22px; height: 1.5px; background: #fff; }
+
+    /* ─── HERO ─── */
+    .hero {
+      padding-top: 60px;
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-left {
+      padding: 80px 60px 80px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 1px solid var(--line);
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 32px;
+    }
+
+    .hero-h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(60px, 7vw, 100px);
+      font-weight: 900;
+      line-height: 0.95;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-h1 em {
+      font-style: normal;
+      color: var(--red);
+      display: block;
+    }
+
+    .hero-bottom {
+      margin-top: auto;
+      padding-top: 60px;
+    }
+
+    .hero-desc {
+      font-size: 17px;
+      color: rgba(255,255,255,0.6);
+      max-width: 440px;
+      line-height: 1.65;
+      margin-bottom: 36px;
+    }
+
+    .hero-desc strong { color: #fff; font-weight: 600; }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      transition: all 0.15s;
+    }
+
+    .btn-red {
+      background: var(--red);
+      color: #fff;
+    }
+    .btn-red:hover { background: var(--red-h); }
+
+    .btn-ghost {
+      color: rgba(255,255,255,0.55);
+      border: 1px solid var(--line);
+    }
+    .btn-ghost:hover { color: #fff; border-color: rgba(255,255,255,0.3); }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.7);
+    }
+
+    .hero-right-label {
+      position: absolute;
+      bottom: 32px;
+      left: 32px;
+      right: 32px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-right-label::before {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.15);
+    }
+
+    .hero-stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+    }
+
+    .hero-stat {
+      padding: 28px 32px;
+      border-right: 1px solid var(--line);
+    }
+
+    .hero-stat:last-child { border-right: none; }
+
+    .hero-stat-n {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 42px;
+      font-weight: 800;
+      line-height: 1;
+      color: #fff;
+    }
+
+    .hero-stat-n span { color: var(--red); }
+
+    .hero-stat-l {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    /* ─── SECTION BASE ─── */
+    .section-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-num::after {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--red);
+    }
+
+    /* ─── OFFER SECTIONS ─── */
+    .offer-section {
+      border-top: 1px solid var(--line);
+    }
+
+    /* Header bar for each offer section */
+    .offer-header {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .offer-header-num {
+      padding: 40px 48px;
+      border-right: 1px solid var(--line);
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .offer-header-num-text {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 140px;
+      font-weight: 900;
+      line-height: 0.85;
+      color: rgba(255,255,255,0.04);
+      letter-spacing: -0.04em;
+      user-select: none;
+    }
+
+    .offer-header-content {
+      padding: 48px 64px;
+    }
+
+    .offer-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 16px;
+    }
+
+    .offer-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(38px, 5vw, 64px);
+      font-weight: 800;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      margin-bottom: 20px;
+    }
+
+    .offer-lead {
+      font-size: 17px;
+      color: rgba(255,255,255,0.6);
+      max-width: 640px;
+      line-height: 1.65;
+    }
+
+    .offer-lead strong { color: #fff; }
+
+    /* Body of each offer section */
+    .offer-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .offer-body-left {
+      border-right: 1px solid var(--line);
+      overflow: hidden;
+      min-height: 460px;
+      position: relative;
+    }
+
+    .offer-body-left img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .offer-body-right {
+      padding: 52px 60px;
+    }
+
+    .offer-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .offer-list li {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: start;
+      gap: 24px;
+    }
+
+    .offer-list li:first-child { border-top: 1px solid var(--line); }
+
+    .offer-list-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin-bottom: 4px;
+    }
+
+    .offer-list-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .offer-list-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--red);
+      border: 1px solid rgba(201,36,42,0.35);
+      padding: 4px 8px;
+      white-space: nowrap;
+      margin-top: 3px;
+      align-self: start;
+    }
+
+    .offer-note {
+      margin-top: 36px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .offer-note-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .offer-note p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.65;
+    }
+
+    .offer-note strong { color: rgba(255,255,255,0.8); }
+
+    /* Alternate: dark panel */
+    .offer-alt .offer-body-right {
+      background: var(--ink-2);
+    }
+
+    /* ─── CTA ─── */
+    .cta-block {
+      border-top: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .cta-left {
+      padding: 80px 64px;
+      border-right: 1px solid var(--line);
+    }
+
+    .cta-left-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 24px;
+    }
+
+    .cta-h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(46px, 5vw, 72px);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      margin-bottom: 28px;
+    }
+
+    .cta-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.5);
+      max-width: 420px;
+      line-height: 1.65;
+      margin-bottom: 44px;
+    }
+
+    .cta-sub strong { color: rgba(255,255,255,0.85); }
+
+    .cta-btns { display: flex; flex-direction: column; gap: 12px; max-width: 340px; }
+
+    .btn-full {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 18px 24px;
+      border: 1px solid var(--line);
+      color: rgba(255,255,255,0.7);
+      transition: all 0.15s;
+    }
+
+    .btn-full:hover { color: #fff; border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.03); }
+
+    .btn-full.primary {
+      background: var(--red);
+      border-color: var(--red);
+      color: #fff;
+    }
+
+    .btn-full.primary:hover { background: var(--red-h); border-color: var(--red-h); }
+
+    .btn-full-arrow { font-size: 18px; opacity: 0.6; }
+    .btn-full.primary .btn-full-arrow { opacity: 1; }
+
+    .cta-right {
+      padding: 64px;
+      background: var(--ink-2);
+    }
+
+    .cta-form-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin-bottom: 28px;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .form-field label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .form-field input,
+    .form-field textarea,
+    .form-field select {
+      background: var(--ink);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #fff;
+      font-family: 'Barlow', sans-serif;
+      font-size: 15px;
+      padding: 12px 14px;
+      outline: none;
+      transition: border-color 0.15s;
+      -webkit-appearance: none;
+    }
+
+    .form-field input::placeholder,
+    .form-field textarea::placeholder { color: rgba(255,255,255,0.2); }
+
+    .form-field input:focus,
+    .form-field textarea:focus,
+    .form-field select:focus { border-color: rgba(255,255,255,0.35); }
+
+    .form-field textarea { resize: vertical; min-height: 90px; }
+
+    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    .form-field select option { background: var(--ink); }
+
+    .form-submit {
+      width: 100%;
+      background: var(--red);
+      color: #fff;
+      border: none;
+      font-family: 'Barlow', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 16px;
+      cursor: pointer;
+      margin-top: 6px;
+      transition: background 0.15s;
+    }
+
+    .form-submit:hover { background: var(--red-h); }
+
+    /* ─── CONTACTS ROW ─── */
+    .contacts-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--line);
+    }
+
+    .contact-cell {
+      padding: 32px 40px;
+      border-right: 1px solid var(--line);
+    }
+
+    .contact-cell:last-child { border-right: none; }
+
+    .contact-cell-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .contact-cell a, .contact-cell span {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .contact-cell a:hover { color: var(--red); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 0;
+    }
+
+    .footer-main {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .footer-brand {
+      padding: 40px 48px;
+      border-right: 1px solid var(--line);
+    }
+
+    .footer-brand img { height: 28px; filter: brightness(0) invert(1); margin-bottom: 16px; display: block; }
+
+    .footer-brand p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .footer-col {
+      padding: 40px 40px;
+      border-right: 1px solid var(--line);
+    }
+
+    .footer-col:last-child { border-right: none; }
+
+    .footer-col h4 {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+    .footer-col ul a {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-col ul a:hover { color: #fff; }
+
+    .footer-bottom {
+      padding: 20px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: rgba(255,255,255,0.2);
+    }
+
+    .footer-bottom a { color: rgba(255,255,255,0.2); text-decoration: none; }
+    .footer-bottom a:hover { color: rgba(255,255,255,0.45); }
+
+    /* ─── IMAGE PLACEHOLDER (when no image available) ─── */
+    .img-placeholder {
+      width: 100%;
+      height: 100%;
+      min-height: 460px;
+      background: var(--ink-3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .img-placeholder-icon {
+      font-size: 48px;
+      opacity: 0.25;
+    }
+
+    .img-placeholder-text {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.15);
+    }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+      .hero-left { padding: 60px 32px; }
+      .offer-header { grid-template-columns: 1fr; }
+      .offer-header-num { display: none; }
+      .offer-header-content { padding: 40px 32px; }
+      .offer-body { grid-template-columns: 1fr; }
+      .offer-body-left { min-height: 320px; }
+      .offer-body-right { padding: 40px 32px; }
+      .cta-block { grid-template-columns: 1fr; }
+      .cta-left { padding: 56px 32px; border-right: none; border-bottom: 1px solid var(--line); }
+      .cta-right { padding: 48px 32px; }
+      .contacts-row { grid-template-columns: 1fr 1fr; }
+      .footer-main { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: span 2; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu { display: none; }
+      .nav-menu.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 60px;
+        left: 0; right: 0;
+        background: var(--ink);
+        border-bottom: 1px solid var(--line);
+        padding: 8px 0;
+      }
+      .nav-menu.open a {
+        height: auto;
+        line-height: 1;
+        padding: 14px 24px;
+        border: none;
+        border-bottom: 1px solid var(--line);
+      }
+      .nav-menu.open li:first-child a { border-left: none; }
+      .nav-ham { display: flex; }
+      .hero-left { padding: 48px 24px; }
+      .hero-stats-row { grid-template-columns: 1fr 1fr; }
+      .hero-stats-row .hero-stat:last-child { border-right: none; grid-column: span 2; }
+      .offer-header-content { padding: 32px 24px; }
+      .offer-body-right { padding: 32px 24px; }
+      .cta-left { padding: 48px 24px; }
+      .cta-right { padding: 40px 24px; }
+      .form-row-2 { grid-template-columns: 1fr; }
+      .contacts-row { grid-template-columns: 1fr; }
+      .contact-cell { border-right: none; border-bottom: 1px solid var(--line); padding: 24px; }
+      .footer-main { grid-template-columns: 1fr; }
+      .footer-brand { grid-column: span 1; border-right: none; }
+      .footer-col { border-right: none; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; padding: 20px 24px; }
+    }
+
+    /* ─── REVEAL ─── */
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    [data-reveal].visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    [data-reveal="1"] { transition-delay: 0.05s; }
+    [data-reveal="2"] { transition-delay: 0.12s; }
+    [data-reveal="3"] { transition-delay: 0.19s; }
+    [data-reveal="4"] { transition-delay: 0.26s; }
+    [data-reveal="5"] { transition-delay: 0.33s; }
+
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-row">
+    <a href="#" class="nav-logo">
+      <img src="metbud.png" alt="Metbud" />
+    </a>
+    <ul class="nav-menu" id="menu">
+      <li><a href="#lawety">Lawety</a></li>
+      <li><a href="#szczeble">Szczeble i podesty</a></li>
+      <li><a href="#balustrady">Balustrady i wiaty</a></li>
+      <li><a href="#kontakt" class="nav-cta-link">Wycena</a></li>
+    </ul>
+    <div class="nav-ham" id="ham" role="button" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div>
+      <p class="hero-eyebrow">Polska produkcja — dostawa B2B</p>
+      <h1 class="hero-h1">
+        Producent<br />
+        elementów
+        <em>stalowych</em>
+        i aluminiowych
+      </h1>
+    </div>
+    <div class="hero-bottom">
+      <p class="hero-desc">
+        Produkujemy komponenty metalowe dla firm, które <strong>nie mogą czekać
+        i nie tolerują błędów</strong> — od blach perforowanych do lawet,
+        przez szczeble drabinowe, po balustrady i wiaty.
+      </p>
+      <div class="hero-actions">
+        <a href="#kontakt" class="btn btn-red">Zapytaj o wycenę</a>
+        <a href="#lawety" class="btn btn-ghost">Zobacz ofertę</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="hf_20260219_130315_c0147008-e670-42ef-9a5f-58504978d49a.jpg"
+         alt="Platforma antypoślizgowa lawety" />
+    <div class="hero-right-label">Blacha perforowana antypoślizgowa — laweta</div>
+  </div>
+</div>
+<div class="hero-stats-row">
+  <div class="hero-stat">
+    <div class="hero-stat-n">25<span>+</span></div>
+    <div class="hero-stat-l">Lat doświadczenia</div>
+  </div>
+  <div class="hero-stat">
+    <div class="hero-stat-n">500<span>+</span></div>
+    <div class="hero-stat-l">Klientów B2B</div>
+  </div>
+  <div class="hero-stat">
+    <div class="hero-stat-n">48<span>h</span></div>
+    <div class="hero-stat-l">Wycena</div>
+  </div>
+</div>
+
+<!-- ───────────────────────────────────────
+     SEKCJA 01 — LAWETY
+─────────────────────────────────────────── -->
+<section class="offer-section" id="lawety">
+  <div class="offer-header">
+    <div class="offer-header-num">
+      <div class="offer-header-num-text">01</div>
+    </div>
+    <div class="offer-header-content">
+      <p class="offer-tag" data-reveal="1">Dla producentów i serwisów lawet</p>
+      <h2 class="offer-title" data-reveal="2">
+        Komponenty do lawet<br />
+        i autotransporterów
+      </h2>
+      <p class="offer-lead" data-reveal="3">
+        Produkujemy <strong>blachy perforowane, najazdy, rampy i akcesoria ze stali i aluminium</strong>
+        dla producentów lawet, autotransporterów i platform LOHR.
+        Każdy element na wymiar — od pojedynczego detalu po serie produkcyjne.
+      </p>
+    </div>
+  </div>
+  <div class="offer-body">
+    <div class="offer-body-left">
+      <img src="hf_20260219_130331_3163aefc-be0a-4621-959d-2794833430d3.jpg"
+           alt="Blacha perforowana antypoślizgowa — laweta" />
+    </div>
+    <div class="offer-body-right">
+      <ul class="offer-list">
+        <li data-reveal="1">
+          <div>
+            <div class="offer-list-name">Blachy perforowane antypoślizgowe</div>
+            <div class="offer-list-desc">
+              Stal i aluminium. Wzory perforacji standardowe lub na zamówienie.
+              Formatki pod Twój rysunek, z tolerancją CNC.
+            </div>
+          </div>
+          <div class="offer-list-tag">Stal / Alu</div>
+        </li>
+        <li data-reveal="2">
+          <div>
+            <div class="offer-list-name">Najazdy i rampy załadunkowe</div>
+            <div class="offer-list-desc">
+              Najazdy aluminiowe i stalowe do lawet jednoosiowych, dwuosiowych
+              i platform LOHR. Wzmocnienia, zawiasy, okucia.
+            </div>
+          </div>
+          <div class="offer-list-tag">Na wymiar</div>
+        </li>
+        <li data-reveal="3">
+          <div>
+            <div class="offer-list-name">Podesty i platformy ładunkowe</div>
+            <div class="offer-list-desc">
+              Podesty główne, boczne i tylne platform transportowych.
+              Aluminium wytłaczane lub stal ocynkowana.
+            </div>
+          </div>
+          <div class="offer-list-tag">Seria / Jednostka</div>
+        </li>
+        <li data-reveal="4">
+          <div>
+            <div class="offer-list-name">Akcesoria i elementy mocujące</div>
+            <div class="offer-list-desc">
+              Haki, wsporniki, bortnice, profil L i C, elementy spawane
+              wg rysunku technicznego klienta.
+            </div>
+          </div>
+          <div class="offer-list-tag">Spawanie CNC</div>
+        </li>
+        <li data-reveal="5">
+          <div>
+            <div class="offer-list-name">Serwis i regeneracja blach</div>
+            <div class="offer-list-desc">
+              Wymiana zużytych blach podestowych w istniejących lawetach.
+              Docinamy na wymiar ze starej blachy jako wzorca.
+            </div>
+          </div>
+          <div class="offer-list-tag">Serwis</div>
+        </li>
+      </ul>
+      <div class="offer-note" data-reveal="5">
+        <div class="offer-note-label">Dla kogo</div>
+        <p>
+          Producenci lawet i platform transportowych, serwisy zabudów,
+          firmy fleetowe. Dostarczamy <strong>od 1 do kilkuset szt.</strong> —
+          bez minimalnych wartości zamówienia.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────────────────────────────
+     SEKCJA 02 — SZCZEBLE I PODESTY
+─────────────────────────────────────────── -->
+<section class="offer-section offer-alt" id="szczeble">
+  <div class="offer-header">
+    <div class="offer-header-num">
+      <div class="offer-header-num-text">02</div>
+    </div>
+    <div class="offer-header-content">
+      <p class="offer-tag" data-reveal="1">Dla producentów drabin, zbiorników i klatek</p>
+      <h2 class="offer-title" data-reveal="2">
+        Szczeble drabinowe<br />
+        i podesty antypoślizgowe
+      </h2>
+      <p class="offer-lead" data-reveal="3">
+        Szczeble i podesty dla producentów <strong>drabin pionowych, przemysłowych
+        klatek schodowych, zbiorników na zboże i silosów</strong>.
+        Certyfikowane, powtarzalne, w seriach — gotowe do spawu lub montażu.
+      </p>
+    </div>
+  </div>
+  <div class="offer-body">
+    <div class="offer-body-left">
+      <img src="hf_20260219_133750_8e7de6c7-d044-472c-9d1e-3527fe304a2d.png"
+           alt="Szczeble drabinowe pionowe na silosie" />
+    </div>
+    <div class="offer-body-right">
+      <ul class="offer-list">
+        <li data-reveal="1">
+          <div>
+            <div class="offer-list-name">Szczeble do drabin pionowych</div>
+            <div class="offer-list-desc">
+              Ø 20–30 mm, antypoślizgowe tłoczenie powierzchni.
+              Otwory montażowe pod spawanie lub połączenie śrubowe.
+              Ocynk ogniowy lub galwaniczny.
+            </div>
+          </div>
+          <div class="offer-list-tag">EN ISO 14122</div>
+        </li>
+        <li data-reveal="2">
+          <div>
+            <div class="offer-list-name">Klatki i obudowy drabin — łuki i obręcze</div>
+            <div class="offer-list-desc">
+              Gięte obręcze ochronne do drabin pionowych wg normy.
+              Walcowane z pręta lub rury, powtarzalne w serii.
+            </div>
+          </div>
+          <div class="offer-list-tag">Seria</div>
+        </li>
+        <li data-reveal="3">
+          <div>
+            <div class="offer-list-name">Podesty przemysłowe i spoczniki</div>
+            <div class="offer-list-desc">
+              Blacha perforowana lub kratownica pomostowa ze stali ocynkowanej.
+              Bortnica, uchwyt ścienny, formatka na wymiar.
+            </div>
+          </div>
+          <div class="offer-list-tag">Ocynk ogniowy</div>
+        </li>
+        <li data-reveal="4">
+          <div>
+            <div class="offer-list-name">Zbiorniki na zboże — szczeble i włazy</div>
+            <div class="offer-list-desc">
+              Szczeble odporne na środki agrochemiczne i wilgoć.
+              Elementy włazów i pierścieni doszczelniających.
+            </div>
+          </div>
+          <div class="offer-list-tag">Rolnictwo</div>
+        </li>
+        <li data-reveal="5">
+          <div>
+            <div class="offer-list-name">Pomosty i galerie techniczne</div>
+            <div class="offer-list-desc">
+              Prefabrykowane segmenty pomostów dla przemysłu chemicznego,
+              energetycznego i spożywczego.
+            </div>
+          </div>
+          <div class="offer-list-tag">Przemysł</div>
+        </li>
+      </ul>
+      <div class="offer-note" data-reveal="5">
+        <div class="offer-note-label">Dla kogo</div>
+        <p>
+          Producenci drabin pionowych i przemysłowych, producenci silosów
+          i zbiorników technologicznych, zakłady produkujące klatki schodowe
+          dla przemysłu. <strong>Certyfikaty materiałowe EN 10204 na życzenie.</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────────────────────────────
+     SEKCJA 03 — BALUSTRADY I WIATY
+─────────────────────────────────────────── -->
+<section class="offer-section" id="balustrady">
+  <div class="offer-header">
+    <div class="offer-header-num">
+      <div class="offer-header-num-text">03</div>
+    </div>
+    <div class="offer-header-content">
+      <p class="offer-tag" data-reveal="1">Dla deweloperów i generalnych wykonawców</p>
+      <h2 class="offer-title" data-reveal="2">
+        Balustrady, schody<br />
+        i wiaty
+      </h2>
+      <p class="offer-lead" data-reveal="3">
+        Kompletne elementy stalowe dla inwestycji budowlanych —
+        <strong>klatki schodowe, balustrady, pochwyty, schody i wiaty</strong>
+        z jednego miejsca, pod jeden harmonogram budowy.
+        Projekt, produkcja, montaż.
+      </p>
+    </div>
+  </div>
+  <div class="offer-body">
+    <div class="offer-body-left">
+      <img src="hf_20260219_132523_868528eb-5945-4fcb-b339-1a7667641687.png"
+           alt="Szczeble antypoślizgowe w obiekcie przemysłowym" />
+    </div>
+    <div class="offer-body-right">
+      <ul class="offer-list">
+        <li data-reveal="1">
+          <div>
+            <div class="offer-list-name">Balustrady i pochwyty</div>
+            <div class="offer-list-desc">
+              Stal nierdzewna, ocynkowana lub malowana proszkowo.
+              Wypełnienie: pręt, szkło, siatka. PN-EN 1090 EXC2.
+            </div>
+          </div>
+          <div class="offer-list-tag">PN-EN 1090</div>
+        </li>
+        <li data-reveal="2">
+          <div>
+            <div class="offer-list-name">Schody stalowe</div>
+            <div class="offer-list-desc">
+              Schody zewnętrzne i ewakuacyjne, wewnętrzne wspornikowe
+              i policzkowe. Stopnie perforowane lub z drewnem.
+            </div>
+          </div>
+          <div class="offer-list-tag">Na wymiar</div>
+        </li>
+        <li data-reveal="3">
+          <div>
+            <div class="offer-list-name">Klatki schodowe stalowe</div>
+            <div class="offer-list-desc">
+              Prefabrykowane klatki schodowe — konstrukcja, spoczniki, stopnie —
+              gotowe do montażu na placu budowy.
+            </div>
+          </div>
+          <div class="offer-list-tag">Prefabrykacja</div>
+        </li>
+        <li data-reveal="4">
+          <div>
+            <div class="offer-list-name">Wiaty parkingowe i rowerowe</div>
+            <div class="offer-list-desc">
+              Konstrukcja stalowa z pokryciem: poliwęglan, trapez, HPL.
+              Wiaty na śmietniki, rowerowe, dla pieszych.
+            </div>
+          </div>
+          <div class="offer-list-tag">Projekt + montaż</div>
+        </li>
+        <li data-reveal="5">
+          <div>
+            <div class="offer-list-name">Podesty serwisowe i galerie</div>
+            <div class="offer-list-desc">
+              Pomosty i galerie techniczne do obiektów komercyjnych
+              i produkcyjnych. Dostosowanie do istniejącej geometrii budynku.
+            </div>
+          </div>
+          <div class="offer-list-tag">Obiekty</div>
+        </li>
+      </ul>
+      <div class="offer-note" data-reveal="5">
+        <div class="offer-note-label">Dla kogo</div>
+        <p>
+          Deweloperzy mieszkaniowi i komercyjni, generalni wykonawcy,
+          zarządcy nieruchomości. <strong>Jeden producent = jeden termin = jedna faktura.</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ─── -->
+<section id="kontakt">
+  <div class="cta-block">
+    <div class="cta-left">
+      <p class="cta-left-eyebrow" data-reveal="1">Zapytanie ofertowe</p>
+      <h2 class="cta-h2" data-reveal="2">
+        Wyślij<br />rysunek.<br />
+        Dostaniesz<br />wycenę.
+      </h2>
+      <p class="cta-sub" data-reveal="3">
+        Nie potrzebujemy formalnego RFQ.
+        <strong>PDF, DXF albo opis w mailu</strong> —
+        wracamy z wyceną i terminem realizacji w ciągu 48 godzin roboczych.
+      </p>
+      <div class="cta-btns" data-reveal="4">
+        <a href="mailto:biuro@metbud.pl" class="btn-full primary">
+          <span>Wyślij zapytanie mailowo</span>
+          <span class="btn-full-arrow">→</span>
+        </a>
+        <a href="tel:+48000000000" class="btn-full">
+          <span>Zadzwoń — pon–pt 7:00–16:00</span>
+          <span class="btn-full-arrow">→</span>
+        </a>
+        <a href="#lawety" class="btn-full">
+          <span>Wróć do oferty</span>
+          <span class="btn-full-arrow">↑</span>
+        </a>
+      </div>
+    </div>
+    <div class="cta-right">
+      <div class="cta-form-title" data-reveal="1">Formularz zapytania</div>
+      <form id="contactForm" onsubmit="submitForm(event)">
+        <div class="form-row-2">
+          <div class="form-field" data-reveal="2">
+            <label for="nm">Imię i nazwisko</label>
+            <input type="text" id="nm" name="name" placeholder="Jan Kowalski" required />
+          </div>
+          <div class="form-field" data-reveal="2">
+            <label for="co">Firma</label>
+            <input type="text" id="co" name="company" placeholder="Nazwa firmy" required />
+          </div>
+        </div>
+        <div class="form-row-2">
+          <div class="form-field" data-reveal="3">
+            <label for="em">E-mail</label>
+            <input type="email" id="em" name="email" placeholder="jan@firma.pl" required />
+          </div>
+          <div class="form-field" data-reveal="3">
+            <label for="ph">Telefon</label>
+            <input type="tel" id="ph" name="phone" placeholder="+48 600 000 000" />
+          </div>
+        </div>
+        <div class="form-field" data-reveal="4">
+          <label for="cat">Czego dotyczy zapytanie</label>
+          <select id="cat" name="category">
+            <option value="">Wybierz…</option>
+            <option>Blachy / komponenty do lawet</option>
+            <option>Szczeble drabinowe i podesty</option>
+            <option>Balustrady, schody, wiaty</option>
+            <option>Inny element stalowy / aluminiowy</option>
+          </select>
+        </div>
+        <div class="form-field" data-reveal="5">
+          <label for="msg">Opis zapotrzebowania</label>
+          <textarea id="msg" name="message"
+            placeholder="Rodzaj produktu, materiał, grubość, ilość, termin… Możesz wkleić specyfikację lub opisać problem." required></textarea>
+        </div>
+        <button type="submit" class="form-submit" data-reveal="5">
+          Wyślij zapytanie — wycena w 48h →
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="contacts-row">
+    <div class="contact-cell">
+      <div class="contact-cell-label">Telefon</div>
+      <a href="tel:+48000000000">+48 000 000 000</a>
+    </div>
+    <div class="contact-cell">
+      <div class="contact-cell-label">E-mail</div>
+      <a href="mailto:biuro@metbud.pl">biuro@metbud.pl</a>
+    </div>
+    <div class="contact-cell">
+      <div class="contact-cell-label">Siedziba</div>
+      <span>Polska</span>
+    </div>
+    <div class="contact-cell">
+      <div class="contact-cell-label">Godziny</div>
+      <span>Pon–Pt 7–16</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div class="footer-brand">
+      <img src="metbud.png" alt="Metbud" />
+      <p>
+        Your Partner in Metal Processing.<br />
+        Polska produkcja. Dostawa B2B.
+      </p>
+    </div>
+    <div class="footer-col">
+      <h4>Oferta</h4>
+      <ul>
+        <li><a href="#lawety">Komponenty do lawet</a></li>
+        <li><a href="#szczeble">Szczeble i podesty</a></li>
+        <li><a href="#balustrady">Balustrady i schody</a></li>
+        <li><a href="#balustrady">Wiaty</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Dla kogo</h4>
+      <ul>
+        <li><a href="#lawety">Producenci lawet</a></li>
+        <li><a href="#szczeble">Producenci drabin</a></li>
+        <li><a href="#szczeble">Producenci silosów</a></li>
+        <li><a href="#balustrady">Deweloperzy i GW</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Kontakt</h4>
+      <ul>
+        <li><a href="mailto:biuro@metbud.pl">biuro@metbud.pl</a></li>
+        <li><a href="tel:+48000000000">+48 000 000 000</a></li>
+        <li><a href="#kontakt">Wyślij zapytanie</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 Metbud. Wszelkie prawa zastrzeżone.</span>
+    <div style="display: flex; gap: 20px;">
+      <a href="#">Polityka prywatności</a>
+      <a href="#">RODO</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav
+  const ham = document.getElementById('ham');
+  const menu = document.getElementById('menu');
+  ham.addEventListener('click', () => menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+
+  // Reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+
+  document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+
+  // Form
+  function submitForm(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = '✓ Wysłano — odezwiemy się w ciągu 48h';
+    btn.style.background = '#1a6640';
+    btn.disabled = true;
+  }
+</script>
+</body>
+</html>
