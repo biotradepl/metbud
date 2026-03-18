@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Projekty UE — METBUD Production</title>
+  <meta name="description" content="Projekty dofinansowane ze środków Unii Europejskiej — METBUD Production Sp. z o.o. Sp. k."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --ink:#141b2b;--ink2:#1c2538;--red:#d01c24;--redh:#b01820;
+      --mu:rgba(255,255,255,0.38);--line:rgba(255,255,255,0.09);
+      --eu:#003399;--gold:#FFCC00;
+    }
+    html{font-family:'Barlow',sans-serif;background:var(--ink);color:#fff;scroll-behavior:smooth}
+    body{min-height:100vh;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+
+    /* ─── PROGRESS ─── */
+    #prog{position:fixed;top:0;left:0;height:2px;background:var(--red);z-index:500;width:0%;transition:width 0.1s linear}
+
+    /* ─── NAV ─── */
+    nav{position:fixed;inset:0 0 auto 0;z-index:300;background:rgba(20,27,43,0.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--line)}
+    .nav-row{max-width:1360px;margin:0 auto;padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between}
+    .nav-logo img{height:76px;filter:none;display:block}
+    .nav-menu{display:flex;list-style:none}
+    .nav-menu a{display:block;padding:0 18px;height:60px;line-height:60px;font-size:12px;font-weight:600;letter-spacing:0.07em;color:var(--mu);text-decoration:none;text-transform:uppercase;border-right:1px solid var(--line);transition:color 0.15s}
+    .nav-menu li:first-child a{border-left:1px solid var(--line)}
+    .nav-menu a:hover{color:#fff}
+    .nav-cta{color:var(--red)!important;border:1px solid var(--red)!important;transition:background 0.15s,color 0.15s!important}
+    .nav-cta:hover{background:var(--red)!important;color:#fff!important}
+    .nav-eu{display:flex;align-items:center;padding:0 18px;height:60px;border-left:1px solid var(--line);flex-shrink:0;opacity:1;outline:1px solid rgba(0,51,153,0.45)}
+    .nav-eu svg{display:block}
+    .nav-ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px}
+    .nav-ham span{width:22px;height:1.5px;background:#fff;transition:0.3s}
+
+    /* ─── PAGE WRAPPER ─── */
+    .page{max-width:960px;margin:0 auto;padding:0 48px}
+
+    /* ─── HERO ─── */
+    .proj-hero{padding-top:100px;padding-bottom:48px;border-bottom:1px solid var(--line)}
+    .proj-hero-eyebrow{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--red);margin-bottom:14px}
+    .proj-hero-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(44px,6vw,80px);font-weight:800;text-transform:uppercase;letter-spacing:-0.02em;line-height:0.9}
+    .proj-hero-sub{margin-top:20px;font-size:15px;color:rgba(255,255,255,0.45);line-height:1.7;max-width:640px}
+
+    /* ─── BACK ─── */
+    .back-bar{padding-top:32px;padding-bottom:0}
+    .back-link{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--mu);display:inline-flex;align-items:center;gap:8px;transition:color 0.15s}
+    .back-link:hover{color:#fff}
+    .back-link::before{content:'←';font-size:14px}
+
+    /* ─── PROJECT BLOCK ─── */
+    .proj-block{border-bottom:1px solid var(--line)}
+    .proj-block:last-child{border-bottom:none}
+
+    /* ─── EU LOGO BAR ─── */
+    /* eu-bar: white panel — EU branding guidelines require light background */
+    .eu-bar{border-bottom:1px solid var(--line);background:#fff;padding:20px 32px}
+    .eu-bar-img{display:block;height:60px;width:auto;max-width:100%}
+
+    /* ─── PROJECT TEXT ─── */
+    .proj-content{padding:44px 0}
+    .proj-content-title{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--red);margin-bottom:20px}
+    .proj-body{display:flex;flex-direction:column;gap:14px}
+    .proj-body p{font-size:15px;color:rgba(255,255,255,0.62);line-height:1.75}
+    .proj-body p strong{color:#fff;font-weight:700}
+    .proj-body p em{color:rgba(255,255,255,0.85);font-style:normal}
+    .proj-meta-line{font-size:15px;color:rgba(255,255,255,0.62);line-height:1.75}
+    .proj-meta-line strong{color:#fff}
+    .proj-headline{font-family:'Barlow Condensed',sans-serif;font-size:clamp(18px,2.2vw,26px);font-weight:800;text-transform:uppercase;letter-spacing:-0.01em;color:#fff;margin-bottom:4px}
+    .proj-tasks{list-style:none;display:flex;flex-direction:column;gap:6px;padding-left:0}
+    .proj-tasks li{font-size:15px;color:rgba(255,255,255,0.62);line-height:1.6;padding-left:18px;position:relative}
+    .proj-tasks li::before{content:'';position:absolute;left:0;top:10px;width:6px;height:1px;background:var(--gold)}
+    .proj-values{display:flex;flex-direction:column;gap:6px;padding:20px 24px;background:rgba(255,255,255,0.03);border:1px solid var(--line);border-left:3px solid rgba(0,51,153,0.7)}
+    .proj-values p{font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6}
+    .proj-values p strong{color:#fff;font-size:15px}
+
+    /* ─── MODAL ─── */
+    .modal-bd{position:fixed;inset:0;z-index:8000;background:rgba(10,15,25,0.9);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:20px}
+    .modal-bd.open{display:flex}
+    .modal-box{background:var(--ink2);border:1px solid var(--line);width:100%;max-width:680px;max-height:88vh;overflow-y:auto}
+    .modal-hd{padding:24px 32px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--ink2);z-index:1}
+    .modal-hd h2{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;text-transform:uppercase}
+    .modal-close-btn{background:none;border:1px solid var(--line);color:var(--mu);cursor:pointer;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:18px;transition:color 0.15s,border-color 0.15s;flex-shrink:0}
+    .modal-close-btn:hover{color:#fff;border-color:rgba(255,255,255,0.3)}
+    .modal-body{padding:28px 32px}
+    .rodo-block{margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+    .rodo-block:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+    .rodo-lbl{font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:var(--mu);margin-bottom:5px}
+    .rodo-val{font-size:13px;color:rgba(255,255,255,0.58);line-height:1.65}
+    .rodo-val strong{color:rgba(255,255,255,0.85)}
+    .rodo-val a{color:var(--red)}
+
+    /* ─── FOOTER ─── */
+    footer{border-top:1px solid var(--line);margin-top:0}
+    .foot-main{max-width:1360px;margin:0 auto;padding:48px;display:grid;grid-template-columns:auto 1fr 1fr 1fr;gap:0}
+    .foot-brand{padding:0 48px 0 0;border-right:1px solid var(--line)}
+    .foot-brand img{height:64px;filter:none;display:block;margin-bottom:14px}
+    .foot-brand p{font-size:13px;color:var(--mu);line-height:1.6}
+    .foot-col{padding:0 0 0 48px}
+    .foot-col h4{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--mu);margin-bottom:16px}
+    .foot-col ul{list-style:none}
+    .foot-col li{margin-bottom:8px}
+    .foot-col a{font-size:13px;color:var(--mu);text-decoration:none;transition:color 0.15s}
+    .foot-col a:hover{color:#fff}
+    .foot-bottom{border-top:1px solid var(--line);padding:18px 48px;max-width:1360px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;font-size:11px;color:var(--mu)}
+    .foot-rodo-btn{background:none;border:none;color:inherit;cursor:pointer;font-family:inherit;font-size:inherit;padding:0}
+    .foot-rodo-btn:hover{color:#fff}
+
+    /* ─── RESPONSIVE ─── */
+    @media(max-width:700px){
+      .page{padding:0 20px}
+      .eu-bar{padding:16px 20px}
+      .eu-bar-img{height:44px}
+      .proj-body p,.proj-meta-line,.proj-tasks li{font-size:14px}
+      .foot-main{grid-template-columns:1fr 1fr;padding:32px 20px;gap:24px}
+      .foot-brand{grid-column:span 2;border-right:none;padding:0}
+      .foot-bottom{padding:16px 20px;flex-direction:column;align-items:flex-start;gap:8px}
+    }
+    @media(max-width:500px){
+      .eu-bar-img{height:36px}
+      .nav-menu{display:none;flex-direction:column;position:fixed;top:60px;left:0;right:0;background:var(--ink);border-bottom:1px solid var(--line)}
+      .nav-menu.open{display:flex}
+      .nav-menu a{height:auto;line-height:1;padding:13px 24px;border:none;border-bottom:1px solid var(--line)}
+      .nav-menu li:first-child a{border-left:none}
+      .nav-ham{display:flex}
+      .nav-eu{display:none}
+      .foot-main{grid-template-columns:1fr}
+      .foot-brand{grid-column:span 1}
+    }
+  </style>
+</head>
+<body>
+
+<div id="prog"></div>
+
+<nav>
+  <div class="nav-row">
+    <a href="/" class="nav-logo"><img src="../Metbud_biale_poziome_RED_accent.png" alt="Metbud"/></a>
+    <ul class="nav-menu" id="menu">
+      <li><a href="/#lawety">Elementy do lawet</a></li>
+      <li><a href="/#szczeble">Szczeble i podesty</a></li>
+      <li><a href="/#balustrady">Balustrady i ogrodzenia</a></li>
+      <li><a href="/#kontakt" class="nav-cta">Wycena</a></li>
+    </ul>
+    <a href="/projekty/" class="nav-eu" title="Projekty UE">
+      <svg width="50" height="33" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <rect width="60" height="40" fill="#003399"/>
+        <defs><polygon id="s0" points="0,-2.1 0.62,-0.85 1.99,-0.65 0.99,0.32 1.24,1.7 0,1.05 -1.24,1.7 -0.99,0.32 -1.99,-0.65 -0.62,-0.85" fill="#FFCC00"/></defs>
+        <use href="#s0" x="30" y="10.5"/><use href="#s0" x="34.5" y="11.7"/><use href="#s0" x="38" y="15"/><use href="#s0" x="39.5" y="20"/><use href="#s0" x="38" y="25"/><use href="#s0" x="34.5" y="28.3"/><use href="#s0" x="30" y="29.5"/><use href="#s0" x="25.5" y="28.3"/><use href="#s0" x="22" y="25"/><use href="#s0" x="20.5" y="20"/><use href="#s0" x="22" y="15"/><use href="#s0" x="25.5" y="11.7"/>
+      </svg>
+    </a>
+    <div class="nav-ham" id="ham"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+
+<div class="page">
+  <div class="back-bar"><a href="/" class="back-link">Strona główna</a></div>
+
+  <div class="proj-hero">
+    <div class="proj-hero-eyebrow">Dofinansowanie ze środków Unii Europejskiej</div>
+    <h1 class="proj-hero-title">Projekty<br/>Unijne</h1>
+    <p class="proj-hero-sub">METBUD Production realizuje projekty dofinansowane ze środków Funduszy Europejskich — Program Operacyjny Polska Wschodnia oraz Regionalny Program Operacyjny Województwa Podlaskiego.</p>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       PROJEKT 1 — Strategia wejścia (Program Regionalny)
+  ══════════════════════════════════════════════ -->
+  <div class="proj-block">
+    <div class="eu-bar">
+      <img class="eu-bar-img" src="../Zrzut-ekranu-2021-03-22-o-12.16.14-1024x197.png" alt="Logotypy: Fundusze Europejskie Polska Wschodnia, Rzeczpospolita Polska, Unia Europejska EFRR"/>
+    </div>
+    <div class="proj-content">
+      <div class="proj-content-title">Projekt 1 z 3</div>
+      <div class="proj-body">
+        <p>Firma <strong>METBUD PRODUCTION SP. Z O.O. SP. K.</strong> realizuje projekt dofinansowany z Funduszy Europejskich <em>„Strategia wejścia na rynek zagraniczny firmy METBUD PRODUCTION SP. Z O.O. SP. K."</em></p>
+        <p>Projekt realizowany jest w okresie <strong>22.07.2020 r. do 21.09.2020 r.</strong></p>
+        <p>Celem projektu jest stworzenie strategii wejścia na rynek zagraniczny firmy METBUD PRODUCTION SP. Z O.O. SP. K. Produktem końcowym wytworzonym w trakcie realizacji projektu będzie dokument opisujący strategię wejścia na rynek zagraniczny firmy.</p>
+        <p>Efektem prorozwojowej usługi doradczej będzie rozpoczęcie przez firmę procesu internacjonalizacji na wybrany rynek. Zawarte w strategii rekomendacje będą miały odzwierciedlenie w postaci konkretnych działań.</p>
+        <p>W wyniku realizacji projektu firma pozyska nowe lepiej płatne zlecenia zagraniczne, co przyczyni się do jej rozwoju. Rozwój firmy przełoży się w przyszłości na utworzenie nowych miejsc pracy w województwie podlaskim na potrzebę realizacji nowych zleceń, które wygenerują dodatkowy przychód.</p>
+        <div class="proj-values">
+          <p>Wartość projektu: <strong>55 350,00 PLN</strong></p>
+          <p>Wkład Funduszy Europejskich: <strong>38 250,00 PLN</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       PROJEKT 2 — Internacjonalizacja Dania (PW)
+  ══════════════════════════════════════════════ -->
+  <div class="proj-block">
+    <div class="eu-bar">
+      <img class="eu-bar-img" src="../Zrzut-ekranu-2021-03-22-o-12.16.14-1024x197.png" alt="Logotypy: Fundusze Europejskie Polska Wschodnia, Rzeczpospolita Polska, Unia Europejska EFRR"/>
+    </div>
+    <div class="proj-content">
+      <div class="proj-content-title">Projekt 2 z 3</div>
+      <div class="proj-body">
+        <p><strong>METBUD PRODUCTION SP. Z O.O. SP. K.</strong> realizuje projekt dofinansowany z Funduszy Europejskich <em>„Internacjonalizacja firmy METBUD PRODUCTION SP. Z O.O. SP. K. na rynku duńskim"</em>.</p>
+        <p>Celem projektu internacjonalizacji firmy METBUD PRODUCTION SP. Z O.O. SP. K. jest przygotowanie do wejścia na rynek duński, co w efekcie przyczyni się do dywersyfikacji rynków zbytu, wzrostu sprzedaży, maksymalizacji zysków zakładanych w strategii firmy. Po wejściu na rynek firma zostanie dostawcą blach perforowanych i eksporterem na rynku duńskim. Oczekiwane efekty internacjonalizacji to większe wykorzystanie parku maszynowego, dywersyfikacja klientów, odejście od branży autotransporterów, pozyskanie lepiej płatnych zleceń oraz zwiększenie przychodów i zysków.</p>
+        <p>Wzrost zysków pozwoli utrzymać miejsca pracy w Polsce Wsch., a w przypadku większej liczby zleceń pozwoli na zwiększenie zatrudnienia. W celu wejścia na nowy rynek i wdrożenia modelu biznesowego związanego z internacjonalizacją wskazano poniższe zadania:</p>
+        <ol class="proj-tasks">
+          <li>Zakup środków trwałych.</li>
+          <li>Zakup wartości niematerialnych i prawnych.</li>
+          <li>Wytworzenie materiałów reklamowych i promocyjnych.</li>
+          <li>Szkolenie z oprogramowania.</li>
+          <li>Usługa doradcza dotycząca przygotowania do wdrożenia ISO 9001.</li>
+          <li>Udział w targach w charakterze wystawcy.</li>
+        </ol>
+        <div class="proj-values">
+          <p>Wartość projektu: <strong>542 185,00 PLN</strong></p>
+          <p>Dofinansowanie projektu z UE: <strong>390 575,00 PLN</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       PROJEKT 3 — Internacjonalizacja Francja (POPW)
+  ══════════════════════════════════════════════ -->
+  <div class="proj-block">
+    <div class="eu-bar">
+      <img class="eu-bar-img" src="../Zrzut-ekranu-2021-03-22-o-12.16.14-1024x197.png" alt="Logotypy: Fundusze Europejskie Polska Wschodnia, Rzeczpospolita Polska, Unia Europejska EFRR"/>
+    </div>
+    <div class="proj-content">
+      <div class="proj-content-title">Projekt 3 z 3 · Nr POPW.01.02.00-20-0014/21</div>
+      <div class="proj-body">
+        <p>Internacjonalizacja</p>
+        <p><strong>METBUD PRODUCTION Sp. z o.o. Sp. k.</strong> realizuje projekt nr. <strong>POPW.01.02.00-20-0014/21</strong></p>
+        <div class="proj-headline">„Internacjonalizacja firmy METBUD PRODUCTION Sp. z o.o. Sp. k. na rynku francuskim"</div>
+        <p>w ramach Programu Operacyjnego Polska Wschodnia 2014-2020, działanie 1.2 Internacjonalizacja MŚP, Działanie 1.2. Internacjonalizacja MŚP.</p>
+        <p>Okres realizacji projektu: <strong>01.11.2021 r. – 31.05.2023 r.</strong></p>
+        <div class="proj-values">
+          <p>Budżet projektu: <strong>342 637,05 PLN</strong></p>
+          <p>w tym dofinansowanie z Funduszy Europejskich: <strong>239 995,42 PLN</strong></p>
+        </div>
+        <p>Celem projektu internacjonalizacji firmy METBUD PRODUCTION Sp. z o.o. Sp. k. jest przygotowanie do wejścia na rynek francuski, co w efekcie przyczyni się do dywersyfikacji rynków zbytu, wzrostu sprzedaży, maksymalizacji zysków zakładanych w strategii firmy, a co za tym idzie wzrostu konkurencyjności przedsiębiorstwa. Firma planuje sprzedawać we Francji blachy perforowane wykrawane na prasie CNC i dopasowane do potrzeb klienta.</p>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page -->
+
+<!-- RODO MODAL -->
+<div class="modal-bd" id="rodo-modal" role="dialog" aria-modal="true" aria-labelledby="rodo-modal-title">
+  <div class="modal-box">
+    <div class="modal-hd">
+      <h2 id="rodo-modal-title">Polityka prywatności i RODO</h2>
+      <button class="modal-close-btn" id="rodo-close" aria-label="Zamknij">&#x2715;</button>
+    </div>
+    <div class="modal-body">
+      <div class="rodo-block">
+        <div class="rodo-lbl">Administrator</div>
+        <div class="rodo-val"><strong>METBUD Production Sp. z o.o. Sp. k.</strong><br/>Zalesiany 50, 18-106 Zalesiany · NIP: PL 966 210 82 09 · KRS: 0000652140</div>
+      </div>
+      <div class="rodo-block">
+        <div class="rodo-lbl">Cel przetwarzania</div>
+        <div class="rodo-val">Realizacja zapytań i umów (art. 6 ust. 1 lit. b RODO), obowiązki prawne (lit. c), uzasadniony interes (lit. f). Kontakt: <a href="mailto:biuro@metbud.net">biuro@metbud.net</a></div>
+      </div>
+      <div class="rodo-block">
+        <div class="rodo-lbl">Prawa osoby</div>
+        <div class="rodo-val">Dostęp, sprostowanie, usunięcie, ograniczenie, przenoszenie, sprzeciw. Skarga do Prezesa UODO (ul. Stawki 2, 00-193 Warszawa).</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-main">
+    <div class="foot-brand">
+      <img src="../Metbud_biale_poziome_RED_accent.png" alt="Metbud"/>
+      <p>Polska produkcja. Dostawa w całej UE.</p>
+    </div>
+    <div class="foot-col"><h4>Oferta</h4><ul><li><a href="/#lawety">Elementy do lawet</a></li><li><a href="/#szczeble">Szczeble i podesty</a></li><li><a href="/#balustrady">Balustrady i ogrodzenia</a></li></ul></div>
+    <div class="foot-col"><h4>Dla kogo</h4><ul><li><a href="/#lawety">Producenci lawet</a></li><li><a href="/#szczeble">Producenci drabin</a></li><li><a href="/#balustrady">Deweloperzy i GW</a></li></ul></div>
+    <div class="foot-col"><h4>Kontakt</h4><ul><li><a href="mailto:biuro@metbud.net">biuro@metbud.net</a></li><li><a href="tel:+48535135174">+48 535 135 174</a></li><li><a href="/#kontakt">Wyślij zapytanie</a></li></ul></div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2025 METBUD Production Sp. z o.o. Sp. k.</span>
+    <button class="foot-rodo-btn" data-modal="rodo">Polityka prywatności i RODO</button>
+  </div>
+</footer>
+
+<script>
+/* ─── PROGRESS ─── */
+(function(){
+  const p = document.getElementById('prog');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    p.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+  }, {passive:true});
+})();
+/* ─── MOBILE MENU ─── */
+const ham = document.getElementById('ham'), menu = document.getElementById('menu');
+ham.addEventListener('click', () => menu.classList.toggle('open'));
+menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+/* ─── RODO ─── */
+(function(){
+  const modal = document.getElementById('rodo-modal');
+  const close = () => { modal.classList.remove('open'); document.body.style.overflow = ''; };
+  document.querySelectorAll('[data-modal="rodo"]').forEach(el => el.addEventListener('click', e => { e.preventDefault(); modal.classList.add('open'); document.body.style.overflow = 'hidden'; }));
+  document.getElementById('rodo-close').addEventListener('click', close);
+  modal.addEventListener('click', e => { if(e.target === modal) close(); });
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') close(); });
+})();
+</script>
+</body>
+</html>
