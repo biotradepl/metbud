@@ -39,7 +39,7 @@ $body .= "Telefon         : " . ($phone ?: '—') . "\n";
 $body .= "Dotyczy         : " . ($subject ?: '—') . "\n\n";
 $body .= "Wiadomość:\n$message\n";
 
-$headers  = "From: formularz@metbud.net\r\n";
+$headers  = "From: biuro@metbud.net\r\n";
 $headers .= "Reply-To: $email\r\n";
 $headers .= "MIME-Version: 1.0\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
