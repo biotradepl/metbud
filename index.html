@@ -81,6 +81,9 @@
     .nav-cta:hover{background:var(--red)!important;color:#fff!important}
     .nav-ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px}
     .nav-ham span{width:22px;height:1.5px;background:#fff;transition:0.3s}
+    .nav-eu{display:flex;align-items:center;padding:0 18px;height:60px;border-left:1px solid var(--line);flex-shrink:0;text-decoration:none;opacity:0.85;transition:opacity 0.15s}
+    .nav-eu:hover{opacity:1}
+    .nav-eu svg{display:block;filter:drop-shadow(0 1px 3px rgba(0,0,0,0.4))}
 
     /* ─── TICKER ─── */
     .ticker{background:var(--red);overflow:hidden;height:36px;border-bottom:1px solid rgba(255,255,255,0.1)}
@@ -329,6 +332,7 @@
       .nav-menu a{height:auto;line-height:1;padding:13px 24px;border:none;border-bottom:1px solid var(--line)}
       .nav-menu li:first-child a{border-left:none}
       .nav-ham{display:flex}
+      .nav-eu{display:none}
       .hero-left{padding:48px 24px}
       .stats-row{grid-template-columns:1fr 1fr}
       .stat:last-child{grid-column:span 2}
@@ -365,6 +369,13 @@
       <li><a href="#balustrady" data-sec="balustrady">Balustrady i wiaty</a></li>
       <li><a href="#kontakt" class="nav-cta">Wycena</a></li>
     </ul>
+    <a href="/projekty/" class="nav-eu" title="Projekty UE">
+      <svg width="50" height="33" viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-label="Flaga UE — Projekty unijne">
+        <rect width="60" height="40" fill="#003399"/>
+        <defs><polygon id="eu-s" points="0,-2.1 0.62,-0.85 1.99,-0.65 0.99,0.32 1.24,1.7 0,1.05 -1.24,1.7 -0.99,0.32 -1.99,-0.65 -0.62,-0.85" fill="#FFCC00"/></defs>
+        <use href="#eu-s" x="30" y="10.5"/><use href="#eu-s" x="34.5" y="11.7"/><use href="#eu-s" x="38" y="15"/><use href="#eu-s" x="39.5" y="20"/><use href="#eu-s" x="38" y="25"/><use href="#eu-s" x="34.5" y="28.3"/><use href="#eu-s" x="30" y="29.5"/><use href="#eu-s" x="25.5" y="28.3"/><use href="#eu-s" x="22" y="25"/><use href="#eu-s" x="20.5" y="20"/><use href="#eu-s" x="22" y="15"/><use href="#eu-s" x="25.5" y="11.7"/>
+      </svg>
+    </a>
     <div class="nav-ham" id="ham"><span></span><span></span><span></span></div>
   </div>
 </nav>
