@@ -222,25 +222,72 @@
     .contact-c a,.contact-c span{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:600;color:#fff;text-decoration:none;transition:color 0.15s}
     .contact-c a:hover{color:var(--red)}
 
-    /* ─── RODO ─── */
-    #rodo{border-top:1px solid var(--line);padding:72px 0}
-    .rodo-inner{max-width:1360px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
-    .rodo-head{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--red);margin-bottom:14px}
-    .rodo-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(28px,3vw,42px);font-weight:800;text-transform:uppercase;letter-spacing:-0.01em;margin-bottom:24px}
-    .rodo-block{margin-bottom:22px;padding-bottom:22px;border-bottom:1px solid var(--line)}
+    /* ─── MAP STRIP ─── */
+    .map-strip{position:relative;height:300px;border-top:1px solid var(--line);overflow:hidden}
+    .map-strip iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(0.15) contrast(1.05) brightness(0.8)}
+    .map-strip-grad{position:absolute;inset:0;background:linear-gradient(to right,var(--ink) 0%,rgba(20,27,43,0.88) 30%,rgba(20,27,43,0.35) 58%,transparent 78%);pointer-events:none}
+    .map-strip-card{position:absolute;top:50%;left:0;transform:translateY(-50%);padding:0 56px;max-width:440px}
+    .map-strip-name{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;text-transform:uppercase;letter-spacing:0.02em;color:#fff;margin-bottom:14px}
+    .map-strip-dl{display:flex;flex-direction:column;gap:7px}
+    .map-strip-row{display:flex;gap:10px;font-size:13px}
+    .map-strip-row dt{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--mu);min-width:44px;padding-top:2px;flex-shrink:0}
+    .map-strip-row dd{color:rgba(255,255,255,0.65)}
+    .map-strip-row a{color:rgba(255,255,255,0.65);text-decoration:none}
+    .map-strip-row a:hover{color:var(--red)}
+    /* ─── RODO MODAL ─── */
+    .modal-bd{position:fixed;inset:0;z-index:8000;background:rgba(10,15,25,0.9);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:20px}
+    .modal-bd.open{display:flex}
+    .modal-box{background:var(--ink2);border:1px solid var(--line);width:100%;max-width:680px;max-height:88vh;overflow-y:auto;position:relative}
+    .modal-hd{padding:24px 32px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--ink2);z-index:1}
+    .modal-hd h2{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;text-transform:uppercase;letter-spacing:-0.01em}
+    .modal-close-btn{background:none;border:1px solid var(--line);color:var(--mu);cursor:pointer;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:18px;line-height:1;transition:color 0.15s,border-color 0.15s;flex-shrink:0}
+    .modal-close-btn:hover{color:#fff;border-color:rgba(255,255,255,0.3)}
+    .modal-body{padding:28px 32px}
+    .rodo-block{margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--line)}
     .rodo-block:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
-    .rodo-lbl{font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:var(--mu);margin-bottom:6px}
-    .rodo-val{font-size:14px;color:rgba(255,255,255,0.65);line-height:1.6}
-    .rodo-val strong{color:#fff}
+    .rodo-lbl{font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:var(--mu);margin-bottom:5px}
+    .rodo-val{font-size:13px;color:rgba(255,255,255,0.58);line-height:1.65}
+    .rodo-val strong{color:rgba(255,255,255,0.85)}
     .rodo-val a{color:var(--red);text-decoration:none}
     .rodo-val a:hover{text-decoration:underline}
-    .rodo-map{position:relative;aspect-ratio:4/3;border:1px solid var(--line);overflow:hidden}
-    .rodo-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(0.3) contrast(1.05)}
-    .rodo-addr{margin-top:20px;padding:18px 20px;background:var(--ink2);border:1px solid var(--line)}
-    .rodo-addr-row{display:flex;gap:10px;font-size:13px;color:var(--mu);margin-bottom:6px}
-    .rodo-addr-row:last-child{margin-bottom:0}
-    .rodo-addr-row strong{color:rgba(255,255,255,0.7);min-width:56px}
-    @media(max-width:860px){.rodo-inner{grid-template-columns:1fr;gap:40px}}
+    /* ─── COOKIE BAR ─── */
+    .ck-bar{position:fixed;bottom:0;left:0;right:0;z-index:7500;background:rgba(20,27,43,0.97);backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:16px 40px;display:flex;align-items:center;gap:24px;justify-content:space-between;transform:translateY(0);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1)}
+    .ck-bar.hidden{transform:translateY(110%)}
+    .ck-text{font-size:12px;color:rgba(255,255,255,0.45);line-height:1.55;max-width:580px}
+    .ck-text a{color:var(--red);text-decoration:none;cursor:pointer}
+    .ck-text a:hover{text-decoration:underline}
+    .ck-btns{display:flex;gap:8px;flex-shrink:0}
+    .ck-btn{font-family:'Barlow',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:10px 16px;border:1px solid;cursor:pointer;transition:background 0.15s,color 0.15s,border-color 0.15s;white-space:nowrap}
+    .ck-accept{background:var(--red);border-color:var(--red);color:#fff}
+    .ck-accept:hover{background:var(--redh);border-color:var(--redh)}
+    .ck-reject{background:none;border-color:rgba(255,255,255,0.18);color:rgba(255,255,255,0.55)}
+    .ck-reject:hover{border-color:rgba(255,255,255,0.35);color:#fff}
+    .ck-prefs{background:none;border-color:transparent;color:rgba(255,255,255,0.28);font-size:10px;padding:10px 10px}
+    .ck-prefs:hover{color:rgba(255,255,255,0.55)}
+    /* ─── COOKIE SETTINGS MODAL ─── */
+    .ck-modal{position:fixed;inset:0;z-index:8500;background:rgba(10,15,25,0.9);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:20px}
+    .ck-modal.open{display:flex}
+    .ck-mbox{background:var(--ink2);border:1px solid var(--line);width:100%;max-width:460px}
+    .ck-mhd{padding:22px 26px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+    .ck-mhd h3{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;text-transform:uppercase}
+    .ck-mbody{padding:18px 26px}
+    .ck-cat{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;padding:13px 0;border-bottom:1px solid var(--line)}
+    .ck-cat:last-child{border-bottom:none}
+    .ck-cat-name{font-size:13px;font-weight:600;color:#fff;margin-bottom:3px}
+    .ck-cat-desc{font-size:11px;color:var(--mu);line-height:1.4}
+    .ck-toggle{position:relative;width:36px;height:20px;flex-shrink:0;margin-top:2px}
+    .ck-toggle input{opacity:0;width:0;height:0;position:absolute}
+    .ck-slider{position:absolute;inset:0;background:rgba(255,255,255,0.1);border-radius:10px;cursor:pointer;transition:background 0.2s}
+    .ck-toggle input:checked+.ck-slider{background:var(--red)}
+    .ck-slider::before{content:'';position:absolute;width:14px;height:14px;left:3px;top:3px;background:#fff;border-radius:50%;transition:transform 0.2s}
+    .ck-toggle input:checked+.ck-slider::before{transform:translateX(16px)}
+    .ck-toggle input:disabled+.ck-slider{opacity:0.45;cursor:not-allowed}
+    .ck-mft{padding:14px 26px;border-top:1px solid var(--line)}
+    .ck-save{width:100%;background:var(--red);border:none;color:#fff;font-family:'Barlow',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:13px;cursor:pointer;transition:background 0.15s}
+    .ck-save:hover{background:var(--redh)}
+    .foot-rodo-btn{background:none;border:none;color:inherit;cursor:pointer;font-family:inherit;font-size:inherit;padding:0;text-decoration:none}
+    .foot-rodo-btn:hover{color:#fff}
+    @media(max-width:700px){.ck-bar{flex-direction:column;align-items:flex-start;padding:16px 20px}.ck-btns{flex-wrap:wrap}.map-strip-card{padding:0 24px}.map-strip{height:240px}}
 
     /* ─── FOOTER ─── */
     footer{border-top:1px solid var(--line)}
@@ -481,27 +528,50 @@
   </div>
 </section>
 
-<!-- RODO -->
-<section id="rodo">
-  <div class="rodo-inner">
-    <div>
-      <div class="rodo-head">Ochrona danych osobowych</div>
-      <h2 class="rodo-title">Polityka<br/>prywatności<br/>i RODO</h2>
+<!-- MAP STRIP -->
+<div class="map-strip">
+  <iframe src="https://maps.google.com/maps?q=Zalesiany+50%2C+18-106+Zalesiany%2C+Polska&output=embed&z=15" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="METBUD — mapa dojazdu"></iframe>
+  <div class="map-strip-grad"></div>
+  <div class="map-strip-card">
+    <div class="map-strip-name">METBUD Production Sp. z o.o. Sp. k.</div>
+    <dl class="map-strip-dl">
+      <div class="map-strip-row"><dt>Adres</dt><dd>Zalesiany 50, 18-106 Zalesiany</dd></div>
+      <div class="map-strip-row"><dt>NIP</dt><dd>PL 966 210 82 09</dd></div>
+      <div class="map-strip-row"><dt>KRS</dt><dd>0000652140</dd></div>
+      <div class="map-strip-row"><dt>Tel</dt><dd><a href="tel:+48535135174">+48 535 135 174</a></dd></div>
+      <div class="map-strip-row"><dt>E-mail</dt><dd><a href="mailto:biuro@metbud.net">biuro@metbud.net</a></dd></div>
+      <div class="map-strip-row"><dt>WWW</dt><dd><a href="https://www.metbud.net" target="_blank">www.metbud.net</a></dd></div>
+    </dl>
+  </div>
+</div>
+
+<!-- RODO MODAL -->
+<div class="modal-bd" id="rodo-modal" role="dialog" aria-modal="true" aria-labelledby="rodo-modal-title">
+  <div class="modal-box">
+    <div class="modal-hd">
+      <h2 id="rodo-modal-title">Polityka prywatności i RODO</h2>
+      <button class="modal-close-btn" id="rodo-close" aria-label="Zamknij">&#x2715;</button>
+    </div>
+    <div class="modal-body">
       <div class="rodo-block">
         <div class="rodo-lbl">Administrator danych osobowych</div>
-        <div class="rodo-val"><strong>METBUD Production Sp. z o.o. Sp. k.</strong><br/>Zalesiany 50, 18-106 Zalesiany<br/>NIP / KRS dostępne na życzenie</div>
+        <div class="rodo-val"><strong>METBUD Production Sp. z o.o. Sp. k.</strong><br/>Zalesiany 50, 18-106 Zalesiany<br/>NIP: PL 966 210 82 09 &nbsp;|&nbsp; KRS: 0000652140</div>
       </div>
       <div class="rodo-block">
         <div class="rodo-lbl">Inspektor Ochrony Danych (IOD)</div>
-        <div class="rodo-val">W sprawach dotyczących przetwarzania danych osobowych prosimy o kontakt:<br/><a href="mailto:biuro@metbud.net">biuro@metbud.net</a></div>
+        <div class="rodo-val">W sprawach dotyczących przetwarzania danych osobowych prosimy o kontakt: <a href="mailto:biuro@metbud.net">biuro@metbud.net</a></div>
       </div>
       <div class="rodo-block">
         <div class="rodo-lbl">Cel i podstawa prawna przetwarzania</div>
-        <div class="rodo-val">Dane osobowe (imię, nazwisko, e-mail, telefon, dane firmy) przetwarzamy w celu realizacji zapytań ofertowych i umów (art. 6 ust. 1 lit. b RODO), wypełnienia obowiązków prawnych (lit. c) oraz uzasadnionego interesu administratora — obsługi korespondencji handlowej (lit. f).</div>
+        <div class="rodo-val">Dane osobowe (imię, nazwisko, e-mail, telefon, dane firmy) przetwarzamy w celu realizacji zapytań ofertowych i umów (<strong>art. 6 ust. 1 lit. b RODO</strong>), wypełnienia obowiązków prawnych (lit. c) oraz uzasadnionego interesu administratora — obsługi korespondencji handlowej (lit. f).</div>
       </div>
       <div class="rodo-block">
-        <div class="rodo-lbl">Okres przechowywania</div>
-        <div class="rodo-val">Dane przechowujemy przez czas trwania relacji handlowej oraz 5 lat od jej zakończenia, a w przypadku obowiązków podatkowych — przez 5 lat od końca roku kalendarzowego wystawienia faktury.</div>
+        <div class="rodo-lbl">Pliki cookies</div>
+        <div class="rodo-val">Strona używa plików cookies niezbędnych do jej działania. Za zgodą użytkownika mogą być stosowane pliki cookies analityczne i marketingowe. Preferencje można zmienić w dowolnym momencie klikając <a href="#" id="ck-settings-link">Ustawienia cookies</a>.</div>
+      </div>
+      <div class="rodo-block">
+        <div class="rodo-lbl">Okres przechowywania danych</div>
+        <div class="rodo-val">Dane przechowujemy przez czas trwania relacji handlowej oraz 5 lat od jej zakończenia, a w przypadku obowiązków podatkowych — 5 lat od końca roku kalendarzowego wystawienia faktury.</div>
       </div>
       <div class="rodo-block">
         <div class="rodo-lbl">Prawa osoby, której dane dotyczą</div>
@@ -509,23 +579,46 @@
       </div>
       <div class="rodo-block">
         <div class="rodo-lbl">Przekazywanie danych</div>
-        <div class="rodo-val">Danych nie przekazujemy poza EOG. Mogą być przekazywane podwykonawcom świadczącym usługi IT i księgowe na podstawie umów powierzenia danych.</div>
-      </div>
-    </div>
-    <div>
-      <div class="rodo-map">
-        <iframe src="https://maps.google.com/maps?q=Zalesiany+50%2C+18-106+Zalesiany%2C+Polska&output=embed&z=15" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-      <div class="rodo-addr">
-        <div class="rodo-addr-row"><strong>Firma</strong><span>METBUD Production Sp. z o.o. Sp. k.</span></div>
-        <div class="rodo-addr-row"><strong>Adres</strong><span>Zalesiany 50, 18-106 Zalesiany</span></div>
-        <div class="rodo-addr-row"><strong>Tel</strong><span><a href="tel:+48535135174" style="color:inherit;text-decoration:none">+48 535 135 174</a></span></div>
-        <div class="rodo-addr-row"><strong>E-mail</strong><span><a href="mailto:biuro@metbud.net" style="color:inherit;text-decoration:none">biuro@metbud.net</a></span></div>
-        <div class="rodo-addr-row"><strong>WWW</strong><span><a href="https://www.metbud.net" style="color:inherit;text-decoration:none">www.metbud.net</a></span></div>
+        <div class="rodo-val">Danych nie przekazujemy poza EOG. Mogą być udostępniane podwykonawcom świadczącym usługi IT i księgowe na podstawie umów powierzenia przetwarzania danych.</div>
       </div>
     </div>
   </div>
-</section>
+</div>
+
+<!-- COOKIE BAR -->
+<div class="ck-bar hidden" id="ck-bar" role="region" aria-label="Zgoda na cookies">
+  <p class="ck-text">Używamy plików cookies niezbędnych do działania strony. Za Twoją zgodą możemy stosować też cookies analityczne. Szczegóły w <a href="#" data-modal="rodo">Polityce prywatności</a>.</p>
+  <div class="ck-btns">
+    <button class="ck-btn ck-prefs" id="ck-settings-btn">Ustawienia</button>
+    <button class="ck-btn ck-reject" id="ck-reject">Tylko niezbędne</button>
+    <button class="ck-btn ck-accept" id="ck-accept">Akceptuj wszystkie</button>
+  </div>
+</div>
+
+<!-- COOKIE SETTINGS MODAL -->
+<div class="ck-modal" id="ck-modal" role="dialog" aria-modal="true" aria-labelledby="ck-modal-title">
+  <div class="ck-mbox">
+    <div class="ck-mhd">
+      <h3 id="ck-modal-title">Ustawienia cookies</h3>
+      <button class="modal-close-btn" id="ck-modal-close" aria-label="Zamknij">&#x2715;</button>
+    </div>
+    <div class="ck-mbody">
+      <div class="ck-cat">
+        <div><div class="ck-cat-name">Niezbędne</div><div class="ck-cat-desc">Wymagane do działania strony. Zawsze aktywne.</div></div>
+        <label class="ck-toggle"><input type="checkbox" checked disabled><span class="ck-slider"></span></label>
+      </div>
+      <div class="ck-cat">
+        <div><div class="ck-cat-name">Analityczne</div><div class="ck-cat-desc">Pomagają zrozumieć, jak użytkownicy korzystają ze strony (np. Google Analytics).</div></div>
+        <label class="ck-toggle"><input type="checkbox" id="ck-analytics"><span class="ck-slider"></span></label>
+      </div>
+      <div class="ck-cat">
+        <div><div class="ck-cat-name">Marketingowe</div><div class="ck-cat-desc">Umożliwiają personalizację reklam i śledzenie skuteczności kampanii.</div></div>
+        <label class="ck-toggle"><input type="checkbox" id="ck-marketing"><span class="ck-slider"></span></label>
+      </div>
+    </div>
+    <div class="ck-mft"><button class="ck-save" id="ck-save">Zapisz ustawienia</button></div>
+  </div>
+</div>
 
 <footer>
   <div class="foot-main">
@@ -535,8 +628,8 @@
     <div class="foot-col"><h4>Kontakt</h4><ul><li><a href="mailto:biuro@metbud.net">biuro@metbud.net</a></li><li><a href="tel:+48535135174">+48 535 135 174</a></li><li><a href="#kontakt">Wyślij zapytanie</a></li></ul></div>
   </div>
   <div class="foot-bottom">
-    <span>© 2025 METBUD Production Sp. z o.o. Sp. k. Wszelkie prawa zastrzeżone.</span>
-    <div style="display:flex;gap:20px"><a href="#rodo">Polityka prywatności i RODO</a></div>
+    <span>© 2025 METBUD Production Sp. z o.o. Sp. k.</span>
+    <div style="display:flex;gap:20px;align-items:center"><button class="foot-rodo-btn" data-modal="rodo">Polityka prywatności i RODO</button><span style="opacity:0.3">·</span><button class="foot-rodo-btn" id="ck-settings-foot">Ustawienia cookies</button></div>
   </div>
 </footer>
 
@@ -699,6 +792,76 @@ function submitForm(e) {
   btn.style.background = '#1a6640';
   btn.disabled = true;
 }
+
+/* ══════════════════════════════════════════════════
+   RODO MODAL
+══════════════════════════════════════════════════ */
+(function(){
+  const modal = document.getElementById('rodo-modal');
+
+  function openRodo(e){ if(e) e.preventDefault(); modal.classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeRodo(){ modal.classList.remove('open'); document.body.style.overflow=''; }
+
+  document.querySelectorAll('[data-modal="rodo"]').forEach(el => el.addEventListener('click', openRodo));
+  document.getElementById('rodo-close').addEventListener('click', closeRodo);
+  modal.addEventListener('click', e => { if(e.target===modal) closeRodo(); });
+  document.addEventListener('keydown', e => { if(e.key==='Escape' && modal.classList.contains('open')) closeRodo(); });
+})();
+
+/* ══════════════════════════════════════════════════
+   COOKIES
+══════════════════════════════════════════════════ */
+(function(){
+  const KEY = 'metbud_consent_v1';
+  const bar = document.getElementById('ck-bar');
+  const ckModal = document.getElementById('ck-modal');
+
+  function hideCookieBar(){ bar.classList.add('hidden'); }
+  function showCookieBar(){ bar.classList.remove('hidden'); }
+  function openCkModal(){ ckModal.classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeCkModal(){ ckModal.classList.remove('open'); document.body.style.overflow=''; }
+
+  function saveConsent(prefs){
+    localStorage.setItem(KEY, JSON.stringify({...prefs, ts: Date.now()}));
+    hideCookieBar();
+    closeCkModal();
+  }
+
+  // Load saved settings into toggles
+  function loadSaved(){
+    const raw = localStorage.getItem(KEY);
+    if(!raw) return;
+    try{
+      const p = JSON.parse(raw);
+      document.getElementById('ck-analytics').checked = !!p.analytics;
+      document.getElementById('ck-marketing').checked = !!p.marketing;
+    } catch(e){}
+  }
+
+  // Show bar if no consent stored
+  if(!localStorage.getItem(KEY)){ showCookieBar(); } else { hideCookieBar(); }
+
+  document.getElementById('ck-accept').addEventListener('click', () => saveConsent({essential:true,analytics:true,marketing:true}));
+  document.getElementById('ck-reject').addEventListener('click', () => saveConsent({essential:true,analytics:false,marketing:false}));
+  document.getElementById('ck-settings-btn').addEventListener('click', () => { loadSaved(); openCkModal(); });
+  document.getElementById('ck-modal-close').addEventListener('click', closeCkModal);
+  ckModal.addEventListener('click', e => { if(e.target===ckModal) closeCkModal(); });
+  document.getElementById('ck-save').addEventListener('click', () => saveConsent({
+    essential:true,
+    analytics: document.getElementById('ck-analytics').checked,
+    marketing: document.getElementById('ck-marketing').checked
+  }));
+
+  // Footer cookie settings button
+  const footBtn = document.getElementById('ck-settings-foot');
+  if(footBtn) footBtn.addEventListener('click', () => { loadSaved(); openCkModal(); });
+
+  // "Ustawienia cookies" link inside RODO modal
+  const ckLink = document.getElementById('ck-settings-link');
+  if(ckLink) ckLink.addEventListener('click', e => { e.preventDefault(); loadSaved(); openCkModal(); });
+
+  document.addEventListener('keydown', e => { if(e.key==='Escape' && ckModal.classList.contains('open')) closeCkModal(); });
+})();
 </script>
 </body>
 </html>
