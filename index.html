@@ -517,17 +517,17 @@
       <div class="form-title">Formularz zapytania</div>
       <form id="cform" onsubmit="submitForm(event)">
         <div class="ff-row">
-          <div class="ff"><label>Imię i nazwisko</label><input type="text" placeholder="Jan Kowalski" required/></div>
-          <div class="ff"><label>Firma</label><input type="text" placeholder="Nazwa firmy" required/></div>
+          <div class="ff"><label>Imię i nazwisko</label><input name="name" type="text" placeholder="Jan Kowalski" required/></div>
+          <div class="ff"><label>Firma</label><input name="company" type="text" placeholder="Nazwa firmy" required/></div>
         </div>
         <div class="ff-row">
-          <div class="ff"><label>E-mail</label><input type="email" placeholder="jan@firma.pl" required/></div>
-          <div class="ff"><label>Telefon</label><input type="tel" placeholder="+48 600 000 000"/></div>
+          <div class="ff"><label>E-mail</label><input name="email" type="email" placeholder="jan@firma.pl" required/></div>
+          <div class="ff"><label>Telefon</label><input name="phone" type="tel" placeholder="+48 600 000 000"/></div>
         </div>
         <div class="ff"><label>Dotyczy</label>
-          <select><option value="">Wybierz…</option><option>Blachy / komponenty do lawet</option><option>Szczeble drabinowe i podesty</option><option>Balustrady, schody, wiaty, ogrodzenia</option><option>Inny element stalowy / aluminiowy</option></select>
+          <select name="subject"><option value="">Wybierz…</option><option>Blachy / komponenty do lawet</option><option>Szczeble drabinowe i podesty</option><option>Balustrady, schody, wiaty, ogrodzenia</option><option>Inny element stalowy / aluminiowy</option></select>
         </div>
-        <div class="ff"><label>Opis</label><textarea placeholder="Rodzaj produktu, materiał, ilość, termin…" required></textarea></div>
+        <div class="ff"><label>Opis</label><textarea name="message" placeholder="Rodzaj produktu, materiał, ilość, termin…" required></textarea></div>
         <button type="submit" class="form-btn">Wyślij zapytanie — wycena w 48h →</button>
       </form>
     </div>
@@ -799,10 +799,32 @@ menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
 ══════════════════════════════════════════════════ */
 function submitForm(e) {
   e.preventDefault();
-  const btn = e.target.querySelector('.form-btn');
-  btn.textContent = '✓ Wysłano — odezwiemy się w ciągu 48h';
-  btn.style.background = '#1a6640';
+  const form = e.target;
+  const btn  = form.querySelector('.form-btn');
+  const orig = btn.textContent;
+
+  btn.textContent = 'Wysyłanie…';
   btn.disabled = true;
+
+  fetch('mail.php', { method: 'POST', body: new FormData(form) })
+    .then(r => r.json())
+    .then(data => {
+      if (data.ok) {
+        btn.textContent = '✓ Wysłano — odezwiemy się w ciągu 48h';
+        btn.style.background = '#1a6640';
+        form.reset();
+      } else {
+        btn.textContent = data.error || 'Błąd — spróbuj mailowo';
+        btn.style.background = '#7a1a1a';
+        btn.disabled = false;
+      }
+    })
+    .catch(() => {
+      btn.textContent = 'Błąd sieci — spróbuj mailowo';
+      btn.style.background = '#7a1a1a';
+      btn.disabled = false;
+      setTimeout(() => { btn.textContent = orig; btn.style.background = ''; }, 4000);
+    });
 }
 
 /* ══════════════════════════════════════════════════
