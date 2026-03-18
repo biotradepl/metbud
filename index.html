@@ -237,6 +237,9 @@
     .map-strip-row dd{color:rgba(255,255,255,0.65)}
     .map-strip-row a{color:rgba(255,255,255,0.65);text-decoration:none}
     .map-strip-row a:hover{color:var(--red)}
+    .map-nav-btn{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:9px 18px;background:var(--red);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:background 0.2s}
+    .map-nav-btn:hover{background:#c0141a;color:#fff}
+    .map-nav-btn svg{flex-shrink:0}
     /* ─── RODO MODAL ─── */
     .modal-bd{position:fixed;inset:0;z-index:8000;background:rgba(10,15,25,0.9);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:20px}
     .modal-bd.open{display:flex}
@@ -545,7 +548,7 @@
 
 <!-- MAP STRIP -->
 <div class="map-strip">
-  <iframe src="https://maps.google.com/maps?q=Zalesiany+50%2C+18-106+Zalesiany%2C+Polska&output=embed&z=15" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="METBUD — mapa dojazdu"></iframe>
+  <iframe src="https://maps.google.com/maps?q=METBUD+Production+Sp.+z+o.o.+Zalesiany&output=embed&z=15" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="METBUD — mapa dojazdu"></iframe>
   <div class="map-strip-grad"></div>
   <div class="map-strip-card">
     <div class="map-strip-name">METBUD Production Sp. z o.o. Sp. k.</div>
@@ -557,6 +560,10 @@
       <div class="map-strip-row"><dt>E-mail</dt><dd><a href="mailto:biuro@metbud.net">biuro@metbud.net</a></dd></div>
       <div class="map-strip-row"><dt>WWW</dt><dd><a href="https://www.metbud.net" target="_blank">www.metbud.net</a></dd></div>
     </dl>
+    <a class="map-nav-btn" href="https://www.google.com/maps/dir/?api=1&destination=METBUD+Production+Sp.+z+o.o.+Sp.+k.,+Zalesiany+50,+18-106+Zalesiany" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+      Prowadź do nas
+    </a>
   </div>
 </div>
 
