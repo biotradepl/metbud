@@ -57,30 +57,9 @@
     .proj-block:last-child{border-bottom:none}
 
     /* ─── EU LOGO BAR ─── */
-    .eu-bar{padding:36px 0;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:40px;flex-wrap:wrap}
-    .eu-logo-item{display:flex;align-items:center;gap:12px}
-    .eu-logo-item + .eu-logo-item{padding-left:40px;border-left:1px solid var(--line)}
-
-    /* FE icon (shared shape) */
-    .fe-icon-wrap{width:52px;height:52px;flex-shrink:0}
-    .fe-label{display:flex;flex-direction:column;gap:2px}
-    .fe-label-top{font-family:'Barlow',sans-serif;font-size:14px;font-weight:800;color:#fff;line-height:1.1}
-    .fe-label-bot{font-size:11px;font-weight:600;color:rgba(255,255,255,0.55);line-height:1.2}
-
-    .rp-flag{width:56px;height:38px;flex-shrink:0;border:1px solid rgba(255,255,255,0.12)}
-    .rp-label{display:flex;flex-direction:column;gap:2px}
-    .rp-label-top{font-size:13px;font-weight:800;color:#fff;line-height:1.1}
-    .rp-label-bot{font-size:10px;font-weight:600;color:rgba(255,255,255,0.45)}
-
-    .ue-flag{width:56px;height:38px;flex-shrink:0}
-    .ue-label{display:flex;flex-direction:column;gap:2px}
-    .ue-label-top{font-size:13px;font-weight:800;color:#fff;line-height:1.1}
-    .ue-label-bot{font-size:10px;color:rgba(255,255,255,0.45);line-height:1.3}
-
-    .podl-icon{width:52px;height:52px;flex-shrink:0}
-    .podl-label{display:flex;flex-direction:column;gap:2px}
-    .podl-label-name{font-size:14px;font-weight:800;color:#fff}
-    .podl-label-sub{font-size:10px;color:rgba(255,255,255,0.45)}
+    /* eu-bar: white panel — EU branding guidelines require light background */
+    .eu-bar{border-bottom:1px solid var(--line);background:#fff;padding:20px 32px}
+    .eu-bar-img{display:block;height:60px;width:auto;max-width:100%}
 
     /* ─── PROJECT TEXT ─── */
     .proj-content{padding:44px 0}
@@ -134,16 +113,15 @@
     /* ─── RESPONSIVE ─── */
     @media(max-width:700px){
       .page{padding:0 20px}
-      .eu-bar{gap:20px}
-      .eu-logo-item + .eu-logo-item{padding-left:20px}
+      .eu-bar{padding:16px 20px}
+      .eu-bar-img{height:44px}
       .proj-body p,.proj-meta-line,.proj-tasks li{font-size:14px}
       .foot-main{grid-template-columns:1fr 1fr;padding:32px 20px;gap:24px}
       .foot-brand{grid-column:span 2;border-right:none;padding:0}
       .foot-bottom{padding:16px 20px;flex-direction:column;align-items:flex-start;gap:8px}
     }
     @media(max-width:500px){
-      .eu-bar{flex-direction:column;align-items:flex-start;gap:16px}
-      .eu-logo-item + .eu-logo-item{padding-left:0;border-left:none;border-top:1px solid var(--line);padding-top:16px;width:100%}
+      .eu-bar-img{height:36px}
       .nav-menu{display:none;flex-direction:column;position:fixed;top:60px;left:0;right:0;background:var(--ink);border-bottom:1px solid var(--line)}
       .nav-menu.open{display:flex}
       .nav-menu a{height:auto;line-height:1;padding:13px 24px;border:none;border-bottom:1px solid var(--line)}
@@ -161,11 +139,11 @@
 
 <nav>
   <div class="nav-row">
-    <a href="/" class="nav-logo"><img src="../logo.png" alt="Metbud"/></a>
+    <a href="/" class="nav-logo"><img src="../Metbud_biale_poziome_RED_accent.png" alt="Metbud"/></a>
     <ul class="nav-menu" id="menu">
       <li><a href="/#lawety">Elementy do lawet</a></li>
       <li><a href="/#szczeble">Szczeble i podesty</a></li>
-      <li><a href="/#balustrady">Balustrady i wiaty</a></li>
+      <li><a href="/#balustrady">Balustrady i ogrodzenia</a></li>
       <li><a href="/#kontakt" class="nav-cta">Wycena</a></li>
     </ul>
     <a href="/projekty/" class="nav-eu" title="Projekty UE">
@@ -179,60 +157,6 @@
   </div>
 </nav>
 
-<!-- SVG DEFS (reusable logos) -->
-<svg width="0" height="0" style="position:absolute" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <defs>
-    <!-- 5-pointed star for EU flag -->
-    <polygon id="eu-star" points="0,-2.4 0.7,-0.96 2.28,-0.74 1.14,0.37 1.41,1.95 0,1.2 -1.41,1.95 -1.14,0.37 -2.28,-0.74 -0.7,-0.96" fill="#FFCC00"/>
-    <!-- FE icon shape (blue quadrilateral with star+bands) -->
-    <symbol id="fe-pr-icon" viewBox="0 0 52 52">
-      <!-- Blue bg -->
-      <rect width="52" height="52" fill="#1D4F9F"/>
-      <!-- White/yellow quadrilateral accent shape (upper-left to center) -->
-      <polygon points="4,4 26,4 26,30 4,48" fill="#FFFFFF" opacity="0.18"/>
-      <!-- Star -->
-      <polygon points="19,10 21.4,16.8 28.5,16.8 22.8,21 24.7,27.8 19,24 13.3,27.8 15.2,21 9.5,16.8 16.6,16.8" fill="#FFCC00"/>
-      <!-- Three colored bands at bottom -->
-      <rect x="0" y="39" width="17" height="13" fill="#E63329"/>
-      <rect x="17" y="39" width="18" height="13" fill="#F7A600"/>
-      <rect x="35" y="39" width="17" height="13" fill="#009FE3"/>
-    </symbol>
-    <!-- FE Polska Wschodnia icon (same shape, slightly different palette) -->
-    <symbol id="fe-pw-icon" viewBox="0 0 52 52">
-      <rect width="52" height="52" fill="#1D4F9F"/>
-      <polygon points="4,4 26,4 26,30 4,48" fill="#FFFFFF" opacity="0.18"/>
-      <polygon points="19,10 21.4,16.8 28.5,16.8 22.8,21 24.7,27.8 19,24 13.3,27.8 15.2,21 9.5,16.8 16.6,16.8" fill="#FFCC00"/>
-      <rect x="0" y="39" width="17" height="13" fill="#E63329"/>
-      <rect x="17" y="39" width="18" height="13" fill="#F7A600"/>
-      <rect x="35" y="39" width="17" height="13" fill="#E63329"/>
-    </symbol>
-    <!-- Podlaskie logo: stylized pixel map shape -->
-    <symbol id="podl-icon" viewBox="0 0 52 52">
-      <rect width="52" height="52" fill="transparent"/>
-      <!-- Approximation of Podlaskie pixel map (mosaic of coloured squares) -->
-      <g transform="translate(4,4)">
-        <!-- Row 1 -->
-        <rect x="12" y="0" width="5" height="5" fill="#e63329"/><rect x="17" y="0" width="5" height="5" fill="#f7a600"/><rect x="22" y="0" width="5" height="5" fill="#009fe3"/>
-        <!-- Row 2 -->
-        <rect x="7" y="5" width="5" height="5" fill="#f7a600"/><rect x="12" y="5" width="5" height="5" fill="#8dc63f"/><rect x="17" y="5" width="5" height="5" fill="#e63329"/><rect x="22" y="5" width="5" height="5" fill="#8dc63f"/><rect x="27" y="5" width="5" height="5" fill="#f7a600"/>
-        <!-- Row 3 -->
-        <rect x="2" y="10" width="5" height="5" fill="#009fe3"/><rect x="7" y="10" width="5" height="5" fill="#e63329"/><rect x="12" y="10" width="5" height="5" fill="#f7a600"/><rect x="17" y="10" width="5" height="5" fill="#009fe3"/><rect x="22" y="10" width="5" height="5" fill="#e63329"/><rect x="27" y="10" width="5" height="5" fill="#8dc63f"/><rect x="32" y="10" width="5" height="5" fill="#f7a600"/>
-        <!-- Row 4 -->
-        <rect x="2" y="15" width="5" height="5" fill="#8dc63f"/><rect x="7" y="15" width="5" height="5" fill="#009fe3"/><rect x="12" y="15" width="5" height="5" fill="#e63329"/><rect x="17" y="15" width="5" height="5" fill="#8dc63f"/><rect x="22" y="15" width="5" height="5" fill="#f7a600"/><rect x="27" y="15" width="5" height="5" fill="#009fe3"/><rect x="32" y="15" width="5" height="5" fill="#e63329"/><rect x="37" y="15" width="5" height="5" fill="#8dc63f"/>
-        <!-- Row 5 -->
-        <rect x="7" y="20" width="5" height="5" fill="#f7a600"/><rect x="12" y="20" width="5" height="5" fill="#009fe3"/><rect x="17" y="20" width="5" height="5" fill="#e63329"/><rect x="22" y="20" width="5" height="5" fill="#8dc63f"/><rect x="27" y="20" width="5" height="5" fill="#f7a600"/><rect x="32" y="20" width="5" height="5" fill="#009fe3"/>
-        <!-- Row 6 -->
-        <rect x="7" y="25" width="5" height="5" fill="#8dc63f"/><rect x="12" y="25" width="5" height="5" fill="#e63329"/><rect x="17" y="25" width="5" height="5" fill="#f7a600"/><rect x="22" y="25" width="5" height="5" fill="#009fe3"/><rect x="27" y="25" width="5" height="5" fill="#8dc63f"/>
-        <!-- Row 7 -->
-        <rect x="12" y="30" width="5" height="5" fill="#f7a600"/><rect x="17" y="30" width="5" height="5" fill="#e63329"/><rect x="22" y="30" width="5" height="5" fill="#f7a600"/>
-        <!-- Row 8 -->
-        <rect x="12" y="35" width="5" height="5" fill="#009fe3"/><rect x="17" y="35" width="5" height="5" fill="#8dc63f"/>
-        <!-- Row 9 -->
-        <rect x="17" y="40" width="5" height="5" fill="#e63329"/>
-      </g>
-    </symbol>
-  </defs>
-</svg>
 
 <div class="page">
   <div class="back-bar"><a href="/" class="back-link">Strona główna</a></div>
@@ -248,40 +172,8 @@
   ══════════════════════════════════════════════ -->
   <div class="proj-block">
     <div class="eu-bar">
-      <!-- FE Program Regionalny -->
-      <div class="eu-logo-item">
-        <svg class="fe-icon-wrap" viewBox="0 0 52 52"><use href="#fe-pr-icon"/></svg>
-        <div class="fe-label">
-          <div class="fe-label-top">Fundusze<br/>Europejskie</div>
-          <div class="fe-label-bot">Program Regionalny</div>
-        </div>
-      </div>
-      <!-- Rzeczpospolita Polska -->
-      <div class="eu-logo-item">
-        <svg class="rp-flag" viewBox="0 0 56 38"><rect width="56" height="19" fill="#fff"/><rect y="19" width="56" height="19" fill="#DC143C"/></svg>
-        <div class="rp-label">
-          <div class="rp-label-top">Rzeczpospolita<br/>Polska</div>
-        </div>
-      </div>
-      <!-- Podlaskie -->
-      <div class="eu-logo-item">
-        <svg class="podl-icon" viewBox="0 0 52 52"><use href="#podl-icon"/></svg>
-        <div class="podl-label">
-          <div class="podl-label-name">Podlaskie</div>
-          <div class="podl-label-sub">Województwo Podlaskie</div>
-        </div>
-      </div>
-      <!-- Unia Europejska -->
-      <div class="eu-logo-item">
-        <svg class="ue-flag" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-          <rect width="60" height="40" fill="#003399"/>
-          <use href="#eu-star" x="30" y="10.5"/><use href="#eu-star" x="34.5" y="11.7"/><use href="#eu-star" x="38" y="15"/><use href="#eu-star" x="39.5" y="20"/><use href="#eu-star" x="38" y="25"/><use href="#eu-star" x="34.5" y="28.3"/><use href="#eu-star" x="30" y="29.5"/><use href="#eu-star" x="25.5" y="28.3"/><use href="#eu-star" x="22" y="25"/><use href="#eu-star" x="20.5" y="20"/><use href="#eu-star" x="22" y="15"/><use href="#eu-star" x="25.5" y="11.7"/>
-        </svg>
-        <div class="ue-label">
-          <div class="ue-label-top">Unia Europejska</div>
-          <div class="ue-label-bot">Europejski Fundusz<br/>Rozwoju Regionalnego</div>
-        </div>
-      </div>
+      <img class="eu-bar-img" src="../Zrzut-ekranu-2021-03-22-o-12.16.14-1024x197.png" alt="Logotypy: Fundusze Europejskie Polska Wschodnia, Rzeczpospolita Polska, Unia Europejska EFRR"/>
+    </div>
     </div>
 
     <div class="proj-content">
@@ -305,32 +197,8 @@
   ══════════════════════════════════════════════ -->
   <div class="proj-block">
     <div class="eu-bar">
-      <!-- FE Polska Wschodnia -->
-      <div class="eu-logo-item">
-        <svg class="fe-icon-wrap" viewBox="0 0 52 52"><use href="#fe-pw-icon"/></svg>
-        <div class="fe-label">
-          <div class="fe-label-top">Fundusze<br/>Europejskie</div>
-          <div class="fe-label-bot">Polska Wschodnia</div>
-        </div>
-      </div>
-      <!-- Rzeczpospolita Polska -->
-      <div class="eu-logo-item">
-        <svg class="rp-flag" viewBox="0 0 56 38"><rect width="56" height="19" fill="#fff"/><rect y="19" width="56" height="19" fill="#DC143C"/></svg>
-        <div class="rp-label">
-          <div class="rp-label-top">Rzeczpospolita<br/>Polska</div>
-        </div>
-      </div>
-      <!-- Unia Europejska -->
-      <div class="eu-logo-item">
-        <svg class="ue-flag" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-          <rect width="60" height="40" fill="#003399"/>
-          <use href="#eu-star" x="30" y="10.5"/><use href="#eu-star" x="34.5" y="11.7"/><use href="#eu-star" x="38" y="15"/><use href="#eu-star" x="39.5" y="20"/><use href="#eu-star" x="38" y="25"/><use href="#eu-star" x="34.5" y="28.3"/><use href="#eu-star" x="30" y="29.5"/><use href="#eu-star" x="25.5" y="28.3"/><use href="#eu-star" x="22" y="25"/><use href="#eu-star" x="20.5" y="20"/><use href="#eu-star" x="22" y="15"/><use href="#eu-star" x="25.5" y="11.7"/>
-        </svg>
-        <div class="ue-label">
-          <div class="ue-label-top">Unia Europejska</div>
-          <div class="ue-label-bot">Europejski Fundusz<br/>Rozwoju Regionalnego</div>
-        </div>
-      </div>
+      <img class="eu-bar-img" src="../Zrzut-ekranu-2021-03-22-o-12.16.14-1024x197.png" alt="Logotypy: Fundusze Europejskie Polska Wschodnia, Rzeczpospolita Polska, Unia Europejska EFRR"/>
+    </div>
     </div>
 
     <div class="proj-content">
@@ -360,32 +228,8 @@
   ══════════════════════════════════════════════ -->
   <div class="proj-block">
     <div class="eu-bar">
-      <!-- FE Polska Wschodnia -->
-      <div class="eu-logo-item">
-        <svg class="fe-icon-wrap" viewBox="0 0 52 52"><use href="#fe-pw-icon"/></svg>
-        <div class="fe-label">
-          <div class="fe-label-top">Fundusze<br/>Europejskie</div>
-          <div class="fe-label-bot">Polska Wschodnia</div>
-        </div>
-      </div>
-      <!-- Rzeczpospolita Polska -->
-      <div class="eu-logo-item">
-        <svg class="rp-flag" viewBox="0 0 56 38"><rect width="56" height="19" fill="#fff"/><rect y="19" width="56" height="19" fill="#DC143C"/></svg>
-        <div class="rp-label">
-          <div class="rp-label-top">Rzeczpospolita<br/>Polska</div>
-        </div>
-      </div>
-      <!-- Unia Europejska -->
-      <div class="eu-logo-item">
-        <svg class="ue-flag" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-          <rect width="60" height="40" fill="#003399"/>
-          <use href="#eu-star" x="30" y="10.5"/><use href="#eu-star" x="34.5" y="11.7"/><use href="#eu-star" x="38" y="15"/><use href="#eu-star" x="39.5" y="20"/><use href="#eu-star" x="38" y="25"/><use href="#eu-star" x="34.5" y="28.3"/><use href="#eu-star" x="30" y="29.5"/><use href="#eu-star" x="25.5" y="28.3"/><use href="#eu-star" x="22" y="25"/><use href="#eu-star" x="20.5" y="20"/><use href="#eu-star" x="22" y="15"/><use href="#eu-star" x="25.5" y="11.7"/>
-        </svg>
-        <div class="ue-label">
-          <div class="ue-label-top">Unia Europejska</div>
-          <div class="ue-label-bot">Europejski Fundusz<br/>Rozwoju Regionalnego</div>
-        </div>
-      </div>
+      <img class="eu-bar-img" src="../Zrzut-ekranu-2021-03-22-o-12.16.14-1024x197.png" alt="Logotypy: Fundusze Europejskie Polska Wschodnia, Rzeczpospolita Polska, Unia Europejska EFRR"/>
+    </div>
     </div>
 
     <div class="proj-content">
@@ -434,10 +278,10 @@
 <footer>
   <div class="foot-main">
     <div class="foot-brand">
-      <img src="../logo.png" alt="Metbud"/>
+      <img src="../Metbud_biale_poziome_RED_accent.png" alt="Metbud"/>
       <p>Your Partner in Metal Processing.<br/>Polska produkcja. Dostawa EOG.</p>
     </div>
-    <div class="foot-col"><h4>Oferta</h4><ul><li><a href="/#lawety">Elementy do lawet</a></li><li><a href="/#szczeble">Szczeble i podesty</a></li><li><a href="/#balustrady">Balustrady i wiaty</a></li></ul></div>
+    <div class="foot-col"><h4>Oferta</h4><ul><li><a href="/#lawety">Elementy do lawet</a></li><li><a href="/#szczeble">Szczeble i podesty</a></li><li><a href="/#balustrady">Balustrady i ogrodzenia</a></li></ul></div>
     <div class="foot-col"><h4>Dla kogo</h4><ul><li><a href="/#lawety">Producenci lawet</a></li><li><a href="/#szczeble">Producenci drabin</a></li><li><a href="/#balustrady">Deweloperzy i GW</a></li></ul></div>
     <div class="foot-col"><h4>Kontakt</h4><ul><li><a href="mailto:biuro@metbud.net">biuro@metbud.net</a></li><li><a href="tel:+48535135174">+48 535 135 174</a></li><li><a href="/#kontakt">Wyślij zapytanie</a></li></ul></div>
   </div>
