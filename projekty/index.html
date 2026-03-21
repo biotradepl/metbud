@@ -25,7 +25,7 @@
     /* ─── NAV ─── */
     nav{position:fixed;inset:0 0 auto 0;z-index:300;background:rgba(20,27,43,0.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--line)}
     .nav-row{max-width:1360px;margin:0 auto;padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between}
-    .nav-logo img{height:76px;filter:none;display:block}
+    .nav-logo img{height:46px;filter:none;display:block}
     .nav-menu{display:flex;list-style:none}
     .nav-menu a{display:block;padding:0 18px;height:60px;line-height:60px;font-size:12px;font-weight:600;letter-spacing:0.07em;color:var(--mu);text-decoration:none;text-transform:uppercase;border-right:1px solid var(--line);transition:color 0.15s}
     .nav-menu li:first-child a{border-left:1px solid var(--line)}
@@ -59,7 +59,7 @@
     /* ─── EU LOGO BAR ─── */
     /* eu-bar: white panel — EU branding guidelines require light background */
     .eu-bar{border-bottom:1px solid var(--line);background:#fff;padding:20px 32px}
-    .eu-bar-img{display:block;height:60px;width:auto;max-width:100%}
+    .eu-bar-img{display:block;width:100%;height:auto}
 
     /* ─── PROJECT TEXT ─── */
     .proj-content{padding:44px 0}
@@ -114,14 +114,12 @@
     @media(max-width:700px){
       .page{padding:0 20px}
       .eu-bar{padding:16px 20px}
-      .eu-bar-img{height:44px}
       .proj-body p,.proj-meta-line,.proj-tasks li{font-size:14px}
       .foot-main{grid-template-columns:1fr 1fr;padding:32px 20px;gap:24px}
       .foot-brand{grid-column:span 2;border-right:none;padding:0}
       .foot-bottom{padding:16px 20px;flex-direction:column;align-items:flex-start;gap:8px}
     }
     @media(max-width:500px){
-      .eu-bar-img{height:36px}
       .nav-menu{display:none;flex-direction:column;position:fixed;top:60px;left:0;right:0;background:var(--ink);border-bottom:1px solid var(--line)}
       .nav-menu.open{display:flex}
       .nav-menu a{height:auto;line-height:1;padding:13px 24px;border:none;border-bottom:1px solid var(--line)}
