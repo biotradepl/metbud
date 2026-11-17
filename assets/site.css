@@ -54,7 +54,7 @@ h1,h2,h3{font-family:'Inter Tight',sans-serif;font-weight:500;letter-spacing:-.0
 }
 @media (max-width:640px){
   .hdr-in{min-height:64px}
-  .hdr-logo img{height:26px}
+  .hdr-logo img{height:30px}
   .hdr-actions{gap:8px}
   .hdr-actions > .langs{display:none}
   .nav .nav-langs{display:flex;padding-top:12px}
