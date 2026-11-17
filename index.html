@@ -368,11 +368,13 @@ function submitForm(e){
   btn.textContent = m.sending; btn.disabled = true;
   var data = new FormData(form);
   data.append('_subject', 'Zapytanie ze strony metbud.net — ' + (data.get('subject') || '') + ' — ' + (data.get('company') || data.get('name')));
-  data.append('_language', LANG);
   function fail(){ btn.textContent = m.err; btn.disabled = false; }
   function send(){
     fetch(FORMSPREE, { method:'POST', body:data, headers:{ 'Accept':'application/json' } })
-      .then(function(r){ if (r.ok) { btn.textContent = m.ok; btn.style.background = '#1a6640'; form.reset(); if (window.gtag) gtag('event','generate_lead',{form:'kontakt'}); } else fail(); })
+      .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(res){
+        if (r.ok) { btn.textContent = m.ok; btn.style.background = '#1a6640'; form.reset(); if (window.gtag) gtag('event','generate_lead',{form:'kontakt'}); }
+        else { var msg = res.errors && res.errors[0] && res.errors[0].message; if (window.console) console.warn('Formspree', r.status, res); btn.textContent = msg ? (m.err + ' (' + msg + ')') : m.err; btn.disabled = false; }
+      }); })
       .catch(fail);
   }
   if (window.grecaptcha && grecaptcha.ready) {
