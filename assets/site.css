@@ -34,8 +34,8 @@ h1,h2,h3{font-family:'Inter Tight',sans-serif;font-weight:500;letter-spacing:-.0
 .hdr-logo picture{display:block}
 .hdr-logo img{display:block;height:42px;width:auto;max-width:none}
 .hdr .btn{white-space:nowrap}
-.nav-langs{display:none}
-.nav{display:flex;gap:30px;margin-left:36px;flex:1 1 auto;font-size:14px;font-weight:500}
+.nav .nav-langs{display:none}
+.nav{display:flex;gap:26px;margin-left:36px;white-space:nowrap;flex:1 1 auto;font-size:14px;font-weight:500}
 .nav a{color:#A9ACB2;text-decoration:none;transition:color .25s ease}
 .nav a:hover,.nav a.on{color:#fff}
 .langs{display:flex;gap:2px}
@@ -44,7 +44,7 @@ h1,h2,h3{font-family:'Inter Tight',sans-serif;font-weight:500;letter-spacing:-.0
 .hdr-actions{display:flex;align-items:center;gap:10px}
 .hdr .btn{min-height:44px;padding:0 20px;font-size:14px}
 .burger{display:none;width:44px;height:44px;border:1px solid var(--line2);border-radius:2px;background:transparent;color:#fff;cursor:pointer;align-items:center;justify-content:center}
-@media (max-width:1100px){
+@media (max-width:1320px){
   .nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;margin:0;padding:8px var(--pad) 20px;background:var(--bg);border-bottom:1px solid var(--line)}
   .nav.open{display:flex}
   .nav a{padding:12px 0;border-bottom:1px solid var(--line);font-size:16px}
@@ -57,14 +57,12 @@ h1,h2,h3{font-family:'Inter Tight',sans-serif;font-weight:500;letter-spacing:-.0
   .hdr-logo img{height:26px}
   .hdr-actions{gap:8px}
   .hdr-actions > .langs{display:none}
-  .nav-langs{display:flex;padding-top:12px}
+  .nav .nav-langs{display:flex;padding-top:12px}
   .nav-langs button{font-size:15px}
-  .hdr .wa{padding:0;width:44px;justify-content:center}
-  .hdr .wa span{display:none}
-  .hdr .btn{padding:0 14px;font-size:13px}
+  .hdr .btn{padding:0 14px;font-size:13px;gap:8px}
   html{scroll-padding-top:72px}
 }
-@media (max-width:360px){.hdr .btn{display:none}}
+@media (max-width:360px){.hdr .btn-wa span{display:none}.hdr .btn-wa{padding:0;width:44px;justify-content:center}}
 
 /* hero slider */
 .hero{position:relative;min-height:min(800px,92vh);overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
