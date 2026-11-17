@@ -24,6 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="assets/site.css"/>
+  <script src="https://www.google.com/recaptcha/api.js?render=6Lc7iJosAAAAANJrTwhUwgh5ShpbqTwcuyPY5LGL" async defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Przejdź do treści</a>
@@ -256,7 +257,7 @@ Wykonujemy je ze stali malowanej proszkowo, cortenu i stali nierdzewnej.</p>
             <option value="Ogród i corten" data-i="o4.tag">Ogród i corten</option>
           </select>
         </label>
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px" />
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px" />
         <label class="ff full"><span data-i="fMsg">Wiadomość</span><textarea name="message" rows="5" required></textarea></label>
         <label class="consent"><input type="checkbox" name="rodo" value="tak" required/><span><span data-i="fRodo">Wyrażam zgodę na przetwarzanie danych w celu udzielenia odpowiedzi (RODO).</span> <a href="polityka-prywatnosci/" data-i="privacy">Polityka prywatności i RODO</a></span></label>
         <div class="form-actions">
@@ -358,19 +359,25 @@ document.querySelectorAll('.langs button').forEach(function(b){ b.addEventListen
   document.getElementById('yr').textContent = new Date().getFullYear();
 })();
 
-/* ── Formularz: fetch do mail.php (konfiguracja jak dotychczas) ── */
+/* ── Formularz: Formspree + reCAPTCHA v3 (konfiguracja jak dotychczas) ── */
+var FORMSPREE = 'https://formspree.io/f/xwvwpjry', RECAPTCHA_KEY = '6Lc7iJosAAAAANJrTwhUwgh5ShpbqTwcuyPY5LGL';
 function submitForm(e){
   e.preventDefault();
   var form = e.target, btn = form.querySelector('.form-btn'), m = MSG[LANG];
   if (!form.checkValidity()) { form.reportValidity(); return; }
-  var label = btn.textContent; btn.textContent = m.sending; btn.disabled = true;
-  fetch('mail.php', { method:'POST', body:new FormData(form) })
-    .then(function(r){ return r.json(); })
-    .then(function(d){
-      if (d.ok) { btn.textContent = m.ok; btn.style.background = '#1a6640'; form.reset(); if (window.gtag) gtag('event','generate_lead',{form:'kontakt'}); }
-      else { btn.textContent = m.err; btn.disabled = false; }
-    })
-    .catch(function(){ btn.textContent = m.err; btn.disabled = false; });
+  btn.textContent = m.sending; btn.disabled = true;
+  var data = new FormData(form);
+  data.append('_subject', 'Zapytanie ze strony metbud.net — ' + (data.get('subject') || '') + ' — ' + (data.get('company') || data.get('name')));
+  data.append('_language', LANG);
+  function fail(){ btn.textContent = m.err; btn.disabled = false; }
+  function send(){
+    fetch(FORMSPREE, { method:'POST', body:data, headers:{ 'Accept':'application/json' } })
+      .then(function(r){ if (r.ok) { btn.textContent = m.ok; btn.style.background = '#1a6640'; form.reset(); if (window.gtag) gtag('event','generate_lead',{form:'kontakt'}); } else fail(); })
+      .catch(fail);
+  }
+  if (window.grecaptcha && grecaptcha.ready) {
+    grecaptcha.ready(function(){ grecaptcha.execute(RECAPTCHA_KEY, {action:'submit'}).then(function(token){ data.append('g-recaptcha-response', token); send(); }, send); });
+  } else send();
 }
 
 /* ── Cookies + Consent Mode ────────────────────── */
