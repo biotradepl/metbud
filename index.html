@@ -47,6 +47,7 @@
         <button type="button" data-lang="PL" aria-pressed="true">PL</button>
         <button type="button" data-lang="EN" aria-pressed="false">EN</button>
         <button type="button" data-lang="DE" aria-pressed="false">DE</button>
+        <button type="button" data-lang="UA" aria-pressed="false">UA</button>
       </div>
     </nav>
     <div class="hdr-actions">
@@ -54,6 +55,7 @@
         <button type="button" data-lang="PL" aria-pressed="true">PL</button>
         <button type="button" data-lang="EN" aria-pressed="false">EN</button>
         <button type="button" data-lang="DE" aria-pressed="false">DE</button>
+        <button type="button" data-lang="UA" aria-pressed="false">UA</button>
       </div>
       <a href="https://wa.me/48535135174" target="_blank" rel="noopener" class="btn btn-wa" aria-label="Wycena 48h — WhatsApp"><svg class="ico-wa" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linejoin="round"><path d="M3.5 20.5l1.3-4A8.5 8.5 0 1 1 8 19.6z"/><path d="M9 8.6c0 3 3.4 6.4 6.4 6.4l1-1.5-2-1-1 1c-1-.4-2.6-2-3-3l1-1-1-2z"/></g></svg><span data-i="cta">Wycena 48h</span></a>
       <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="nav" aria-label="Menu">
@@ -316,11 +318,12 @@ function get(o, path){ return path.split('.').reduce(function(a,k){ return a == 
 var MSG = {
   PL:{sending:'Wysyłanie…', ok:'✓ Wysłano — odezwiemy się w ciągu 48 h', err:'Błąd — napisz na biuro@metbud.net', req:'Uzupełnij wymagane pola i zaznacz zgodę.', ck:'Używamy niezbędnych plików cookies. Za Twoją zgodą włączymy też analitykę (Google Analytics). Szczegóły w <a href="polityka-prywatnosci/#cookies">Polityce prywatności</a>.', ckNo:'Tylko niezbędne', ckYes:'Akceptuję'},
   EN:{sending:'Sending…', ok:'✓ Sent — we will reply within 48 h', err:'Error — please email biuro@metbud.net', req:'Please fill in the required fields and tick the consent.', ck:'We use essential cookies. With your consent we also enable analytics (Google Analytics). Details in our <a href="polityka-prywatnosci/#cookies">Privacy policy</a> (PL).', ckNo:'Essential only', ckYes:'Accept'},
+  UA:{sending:'Надсилання…', ok:'✓ Надіслано — відповімо протягом 48 год', err:'Помилка — напишіть на biuro@metbud.net', req:'Заповніть обов’язкові поля та позначте згоду.', ck:'Ми використовуємо необхідні файли cookie. За вашою згодою вмикаємо також аналітику (Google Analytics). Деталі в <a href="polityka-prywatnosci/#cookies">Політиці конфіденційності</a> (PL).', ckNo:'Лише необхідні', ckYes:'Прийняти'},
   DE:{sending:'Wird gesendet…', ok:'✓ Gesendet — Antwort innerhalb von 48 h', err:'Fehler — bitte an biuro@metbud.net schreiben', req:'Bitte Pflichtfelder ausfüllen und Einwilligung bestätigen.', ck:'Wir verwenden notwendige Cookies. Mit Ihrer Einwilligung aktivieren wir auch Analysen (Google Analytics). Details in der <a href="polityka-prywatnosci/#cookies">Datenschutzerklärung</a> (PL).', ckNo:'Nur notwendige', ckYes:'Akzeptieren'}
 };
 function setLang(l){
   if (!T[l]) l = 'PL'; LANG = l; var t = T[l];
-  document.documentElement.lang = l.toLowerCase();
+  document.documentElement.lang = l === 'UA' ? 'uk' : l.toLowerCase();
   document.querySelectorAll('[data-i]').forEach(function(el){ var v = get(t, el.getAttribute('data-i')); if (v != null) el.textContent = v; });
   document.querySelectorAll('[data-i-alt]').forEach(function(el){ var v = get(t, el.getAttribute('data-i-alt')); if (v != null) el.alt = v; });
   document.querySelectorAll('[data-list]').forEach(function(ul){ var arr = get(t, ul.getAttribute('data-list')); if (!arr) return;
@@ -331,7 +334,7 @@ function setLang(l){
 }
 document.querySelectorAll('.langs button').forEach(function(b){ b.addEventListener('click', function(){ setLang(b.dataset.lang); }); });
 (function(){ var l = null; try { l = localStorage.getItem('metbud_lang'); } catch(e){}
-  if (!l) { var n = (navigator.language || 'pl').slice(0,2).toUpperCase(); l = n === 'DE' ? 'DE' : (n === 'PL' ? 'PL' : 'EN'); }
+  if (!l) { var n = (navigator.language || 'pl').slice(0,2).toUpperCase(); l = n === 'DE' ? 'DE' : (n === 'PL' ? 'PL' : (n === 'UK' ? 'UA' : 'EN')); }
   if (l !== 'PL') setLang(l); })();
 
 /* ── Slider USP ────────────────────────────────── */
